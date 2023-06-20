@@ -1,0 +1,12 @@
+.news {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 50px 20px;
+}
+.news:nth-child(3){
+  place-self: end;
+  color: blueviolet;
+}
