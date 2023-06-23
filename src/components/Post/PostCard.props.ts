@@ -5,5 +5,5 @@ export interface IPostCard {
   tags: string;
   image?: string;
   author: string;
-  author_id: number;
+  authorId: number;
 }

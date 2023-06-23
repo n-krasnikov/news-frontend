@@ -6,7 +6,3 @@
   justify-content: space-evenly;
   padding: 50px 20px;
 }
-.news:nth-child(3){
-  place-self: end;
-  color: blueviolet;
-}

@@ -1,4 +1,5 @@
-import { type FC } from 'react';
+import { type FC, memo } from 'react';
+
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -8,14 +9,11 @@ import Typography from '@mui/material/Typography';
 
 import { IPostCard } from './PostCard.props';
 
-export const PostCard: FC<IPostCard> = ({ 
-  id,
+const PostCard: FC<IPostCard> = ({ 
   title,
   text,
-  tags,
   image,
   author,
-  author_id
  }) => {
   return (
     <Card sx={{ width: 425 }}>
@@ -23,7 +21,7 @@ export const PostCard: FC<IPostCard> = ({
         component="img"
         alt="green iguana"
         height="140"
-        image="/src/assets/react.svg"
+        image={image}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -34,9 +32,10 @@ export const PostCard: FC<IPostCard> = ({
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <Button size="small">{author}</Button>
       </CardActions>
     </Card>
   );
 }
+
+export default memo(PostCard);
