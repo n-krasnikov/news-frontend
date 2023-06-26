@@ -19,7 +19,7 @@ export const MainPage: FC = () => {
   
   useEffect(() => {
     dispatch(postsRequest());
-  }, [dispatch]);
+  }, []);
 
   if (isLoading) return <Loader />;
   if (error) return <AlertMessage severity={SEVERITY_ERROR} message={error}/>;

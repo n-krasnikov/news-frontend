@@ -9,9 +9,9 @@ import Typography from '@mui/material/Typography';
 
 import { IPostCard } from './PostCard.props';
 import * as locales from '../../locales.json';
+import defaultImage from '../../assets/react.svg';
 
 const cardStyle: object = { "width": 425 };
-const defaultImage: string = '/src/assets/react.svg';
 
 const PostCard: FC<IPostCard> = ({ 
   title,
