@@ -1,2 +1,2 @@
-export const ERROR = 'error';
-export const INFO = 'info';
+export const SEVERITY_ERROR = 'error';
+export const SEVERITY_INFO = 'info';

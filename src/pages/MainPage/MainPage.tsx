@@ -9,7 +9,7 @@ import { postsRequest } from '../../redux/actions/posts';
 import { RootState } from '../../redux/reducers/rootReducer';
 import { IPost, IPostState } from '../../vite-env';
 import * as locales from '../../locales.json';
-import * as CONST  from './constants';
+import { SEVERITY_ERROR, SEVERITY_INFO } from './constants';
 
 import './MainPage.css';
 
@@ -22,12 +22,12 @@ export const MainPage: FC = () => {
   }, [dispatch]);
 
   if (isLoading) return <Loader />;
-  if (error) return <AlertMessage severity={CONST.ERROR} message={error}/>;
+  if (error) return <AlertMessage severity={SEVERITY_ERROR} message={error}/>;
 
   return (
     <div className='news'>
       {!posts.length && (
-        <AlertMessage severity={CONST.INFO} message={locales.EMPTY_NEWS}/>)
+        <AlertMessage severity={SEVERITY_INFO} message={locales.EMPTY_NEWS}/>)
       }
 
       {posts.map((post: IPost) =>(
