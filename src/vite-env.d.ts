@@ -19,5 +19,5 @@ export interface IPostActions {
 export interface IPostState {
   posts: Array<IPost>,
   isLoading: boolean,
-  error: any,
+  error: string | null,
 }
