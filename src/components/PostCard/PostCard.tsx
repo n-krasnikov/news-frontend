@@ -8,20 +8,26 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 import { IPostCard } from './PostCard.props';
+import * as locales from '../../locales.json';
+
+const cardStyle: object = { "width": 425 };
+const defaultImage: string = '/src/assets/react.svg';
 
 const PostCard: FC<IPostCard> = ({ 
   title,
   text,
+  tags,
   image,
   author,
  }) => {
+
   return (
-    <Card sx={{ width: 425 }}>
+    <Card sx={cardStyle}>
       <CardMedia
         component="img"
-        alt="green iguana"
+        alt={locales.IMAGE_ALT}
         height="140"
-        image={image}
+        image={image || defaultImage}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -32,6 +38,7 @@ const PostCard: FC<IPostCard> = ({
         </Typography>
       </CardContent>
       <CardActions>
+        <Button size="small">{tags}</Button>
         <Button size="small">{author}</Button>
       </CardActions>
     </Card>

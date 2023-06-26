@@ -1,6 +1,6 @@
 import { put, call, takeEvery } from "redux-saga/effects";
-import getPosts from "../../api/getPosts";
 
+import getPosts from "../../api/getPosts";
 import * as actionType from "../actionTypes";
 import { postsFailed, postsReceived } from "../actions/posts";
 

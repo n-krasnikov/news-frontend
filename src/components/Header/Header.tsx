@@ -51,7 +51,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 
-export const Header : FC = () => {
+export const Header: FC = () => {
   return (
     <AppBar position="static">
       <Toolbar>

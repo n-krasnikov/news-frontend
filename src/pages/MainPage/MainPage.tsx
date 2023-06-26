@@ -1,14 +1,15 @@
 import { type FC, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
 
-import PostCard from '../../components/Post/PostCard';
-import { Loader } from '../../components/Loader/Loader';
-import { AlertMessage } from '../../components/AlertMessage/AlertMessage';
+import PostCard from '../../components/PostCard/PostCard';
+import { Loader } from '../../components/Loader';
+import { AlertMessage } from '../../components/AlertMessage';
 
 import { postsRequest } from '../../redux/actions/posts';
 import { RootState } from '../../redux/reducers/rootReducer';
 import { IPost, IPostState } from '../../vite-env';
-import * as LOCALES from '../../locales.json';
+import * as locales from '../../locales.json';
+import * as CONST  from './constants';
 
 import './MainPage.css';
 
@@ -21,16 +22,15 @@ export const MainPage: FC = () => {
   }, [dispatch]);
 
   if (isLoading) return <Loader />;
-  if (error) return <AlertMessage severity='error' message={error}/>;
+  if (error) return <AlertMessage severity={CONST.ERROR} message={error}/>;
 
   return (
     <div className='news'>
-
       {!posts.length && (
-        <AlertMessage severity='info' message={LOCALES.EMPTY_NEWS}/>)
+        <AlertMessage severity={CONST.INFO} message={locales.EMPTY_NEWS}/>)
       }
 
-      {posts.map((post:IPost) =>(
+      {posts.map((post: IPost) =>(
         <PostCard
           key={post.id}
           id={post.id}
@@ -42,7 +42,6 @@ export const MainPage: FC = () => {
           authorId={post.author_id}
         />))
       }
-
     </div>
   );
 }

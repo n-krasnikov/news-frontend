@@ -5,5 +5,9 @@ import CircularProgress from '@mui/material/CircularProgress';
 import './Loader.css'
 
 export const Loader: FC = () => {
-  return <CircularProgress className='loader'/>;
+  return <CircularProgress 
+    size = "150"
+    color = "info"
+    className="loader"
+  />;
 }
