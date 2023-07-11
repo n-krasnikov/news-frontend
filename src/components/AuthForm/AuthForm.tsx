@@ -16,7 +16,7 @@ import {
   SignInSchema, 
   SignInFields, 
   SignUpFields 
-            } from './constants';
+} from './constants';
 
 import './AuthForm.css'
 
@@ -69,7 +69,7 @@ export const AuthForm: FC<IAuth> = ({modalType}) => {
               </Fragment>
             ))}
             
-            <button type="submit">Submit</button>
+            <button type="submit">{modalType}</button>
            
           </Form>
         )}

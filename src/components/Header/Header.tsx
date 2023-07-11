@@ -1,4 +1,4 @@
-import { useEffect, type FC } from 'react';
+import { useEffect, type FC, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/reducers/rootReducer';
 
@@ -8,9 +8,15 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 import { IAuthState } from '../../vite-env';
+import { TOKEN } from './constants';
 import { toggleModal } from '../../redux/actions/modal';
 import { verifyRequested, logout } from '../../redux/actions/auth';
-import { SIGN_IN, SIGN_UP } from '../../locales.json'
+import { 
+  SIGN_IN, 
+  SIGN_UP, 
+  LOGOUT, 
+  GREETING 
+} from '../../locales.json'
 
 import './Header.css'
 
@@ -23,7 +29,7 @@ export const Header: FC = () => {
     dispatch(toggleModal({ status: true, type}));
   }
   const logoutDispatch = ()=>{
-    localStorage.removeItem('token');
+    localStorage.removeItem(TOKEN);
     dispatch(logout());
   }
 
@@ -35,20 +41,19 @@ export const Header: FC = () => {
     <AppBar position="static">
       <Toolbar className='header'>
         {isLoggedIn ? (
-          <>
-          <Button 
-            variant="contained" 
-            size="medium" 
-            onClick={() => logoutDispatch()} 
-            className='button'
-            key='logout'
-          >
-          Log Out
-          </Button>
-          <Typography variant="body1" className='username'>
-            Hello, {userData?.username}
-          </Typography>
-          </>
+          <Fragment>
+            <Button 
+              variant="contained" 
+              size="medium" 
+              onClick={() => logoutDispatch()} 
+              className='button'
+            >
+            {LOGOUT}
+            </Button>
+            <Typography variant="body1" className='username'>
+              {GREETING}{userData?.username}
+            </Typography>
+          </Fragment>
         ):
           buttons.map((type: string) =>(
             <Button 
@@ -58,7 +63,7 @@ export const Header: FC = () => {
               className='button'
               key={type}
             >
-            { type }
+            {type}
             </Button>
           )
         )}

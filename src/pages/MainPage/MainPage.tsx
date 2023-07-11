@@ -43,7 +43,7 @@ export const MainPage: FC = () => {
           authorId={post.author_id}
         />))
       }
-      <BaseModal/>
+      <BaseModal />
     </div>
   );
 }

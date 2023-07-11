@@ -8,16 +8,16 @@ import {
   VERIFY_REQUEST,
   VERIFY_SUCCESS,
   LOGOUT,
-              } from '../actionTypes';
+} from '../actionTypes';
 
 export const signUpRequested = (payload: IAuth) => ({
   type: SIGN_UP_REQUEST,
-  payload
+  payload,
 });
 
 export const signInRequested = (payload: IAuth) => ({
   type: SIGN_IN_REQUEST,
-  payload
+  payload,
 });
   
 export const authReceived = (payload: IAuth) => ({
@@ -32,7 +32,7 @@ export const signInFailed = (error: string) => ({
 
 export const signUpFailed = (error: object) => ({
   type: SIGN_UP_FAILED,
-  error
+  error,
 });
 
 export const verifyRequested = () => ({
@@ -41,7 +41,7 @@ export const verifyRequested = () => ({
   
 export const verifyReceived = (payload: IAuth) => ({
   type: VERIFY_SUCCESS,
-  payload
+  payload,
 });
 
 export const logout = () => ({

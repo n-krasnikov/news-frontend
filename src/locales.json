@@ -2,5 +2,7 @@
   "EMPTY_NEWS": "It seems, empty here...",
   "IMAGE_ALT": "Failed to load image :(",
   "SIGN_IN": "Sign In",
-  "SIGN_UP": "Sign Up"
+  "SIGN_UP": "Sign Up",
+  "LOGOUT": "Log Out",
+  "GREETING": "Hi, "
 }

@@ -8,15 +8,15 @@ import {
   VERIFY_SUCCESS,
   LOGOUT,
   TOGGLE_MODAL,
-         } from '../actionTypes';
+} from '../actionTypes';
 import { IAuthActions, IAuthState } from '../../vite-env';
 
 const initialState: IAuthState = {
- userData: null,
- isLoading: false,
- isLoggedIn: Boolean(localStorage.getItem('token')),
- error: null,
- authErrors: null,
+  userData: null,
+  isLoading: false,
+  isLoggedIn: Boolean(localStorage.getItem('token')),
+  error: null,
+  authErrors: null,
 };
 
 

@@ -34,7 +34,12 @@ const tagArr = tags.split(", ")
       />
       <CardContent className='card-content'>
         {tagArr.map((tag) => <span key={tag} >{tag}</span>)}
-        <Typography gutterBottom variant="h5" component="div" className='post-title'>
+        <Typography 
+          gutterBottom 
+          variant="h5" 
+          component="div" 
+          className='post-title'
+        >
          {title}
         </Typography>
         <Typography variant="body2" className='post-desc'>

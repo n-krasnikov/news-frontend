@@ -8,10 +8,9 @@ import { IAuthActions } from "../../vite-env";
 
 function* onSignIn({ payload }: IAuthActions ) {
   try {
-    const  { data }  = yield call(auth, 'signin', payload);
+    const { data } = yield call(auth, 'signin', payload);
     if (data?.access) localStorage.setItem('token', data?.access);
     yield put(authReceived(payload));
-    
   } catch (error: unknown) {
     if (error instanceof AxiosError) {
       yield put(signInFailed((error as AxiosError)?.response?.data?.detail ?? ''));

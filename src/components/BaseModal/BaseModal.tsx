@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Box from '@mui/material/Box';
@@ -20,15 +21,15 @@ export const BaseModal = () => {
   }
 
   return (
-    <div>    
+    <Fragment>    
       <Modal
         open={isModalOpen}
         onClose={handleClose}
       >
-        <Box sx={style} >
+        <Box sx={style}>
           <AuthForm modalType={modalType ?? ''} />
         </Box>
       </Modal>
-    </div>
+    </Fragment>
   );
 }
