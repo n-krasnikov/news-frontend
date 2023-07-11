@@ -11,8 +11,7 @@ function* onLoadPosts() {
     yield put(postsReceived(data));
   } catch (error: unknown) {
     if (error instanceof AxiosError) {
-      error as AxiosError;
-      yield put(postsFailed(error.message));
+      yield put(postsFailed((error as AxiosError).message));
     }
   }
 }

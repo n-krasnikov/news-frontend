@@ -1,16 +1,16 @@
 import { IPost } from "../../vite-env";
-import  * as actionTypes from '../actionTypes';
+import { POSTS_REQUESTED, POSTS_RECEIVED, POSTS_FAILED } from '../actionTypes';
 
 export const postsRequest = () => ({
-  type: actionTypes.POSTS_REQUESTED
+  type: POSTS_REQUESTED
 });
   
 export const postsReceived = (payload: IPost) => ({
-  type: actionTypes.POSTS_RECEIVED,
+  type: POSTS_RECEIVED,
   payload
 });
 
 export const postsFailed = (error: string) => ({
-    type: actionTypes.POSTS_FAILED,
+    type: POSTS_FAILED,
     error
 });

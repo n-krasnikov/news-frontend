@@ -9,9 +9,10 @@ import Typography from '@mui/material/Typography';
 
 import { IPostCard } from './PostCard.props';
 import * as locales from '../../locales.json';
-import defaultImage from '../../assets/react.svg';
+import { style } from './constants';
 
-const cardStyle: object = { "width": 425 };
+import defaultImage from '../../assets/react.svg';
+import './PostCard.css'
 
 const PostCard: FC<IPostCard> = ({ 
   title,
@@ -21,24 +22,26 @@ const PostCard: FC<IPostCard> = ({
   author,
  }) => {
 
+const tagArr = tags.split(", ")
+
   return (
-    <Card sx={cardStyle}>
+    <Card sx={style}>
       <CardMedia
         component="img"
         alt={locales.IMAGE_ALT}
         height="140"
         image={image || defaultImage}
       />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+      <CardContent className='card-content'>
+        {tagArr.map((tag) => <span key={tag} >{tag}</span>)}
+        <Typography gutterBottom variant="h5" component="div" className='post-title'>
          {title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" className='post-desc'>
           {text}
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">{tags}</Button>
+      <CardActions className='card-footer'>
         <Button size="small">{author}</Button>
       </CardActions>
     </Card>
