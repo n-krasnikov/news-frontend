@@ -1,19 +1,18 @@
 import { useEffect, type FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/reducers/rootReducer';
 
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-
+import { IAuthState } from '../../vite-env';
 import { toggleModal } from '../../redux/actions/modal';
 import { verifyRequested, logout } from '../../redux/actions/auth';
 import { SIGN_IN, SIGN_UP } from '../../locales.json'
 
 import './Header.css'
-import { IAuthState } from '../../vite-env';
-import { RootState } from '../../redux/reducers/rootReducer';
 
 export const Header: FC = () => {
   const buttons = [SIGN_IN, SIGN_UP];

@@ -1,14 +1,14 @@
 import { put, call, takeEvery } from "redux-saga/effects";
 import { AxiosError } from "axios";
 
-import { signUp } from "../../api/postAuth";
+import { auth } from "../../api/postAuth";
 import { signUpFailed, signInRequested } from "../actions/auth";
 import { SIGN_UP_REQUEST } from "../actionTypes";
 import { IAuthActions } from "../../vite-env";
 
 function* onRegistration({ payload }: IAuthActions ) {
   try {
-    yield call(signUp, payload);
+    yield call(auth, 'signup', payload);
     yield put(signInRequested(payload));    
   } catch (error: unknown) {
     if (error instanceof AxiosError) {

@@ -5,7 +5,6 @@ import PostCard from '../../components/PostCard/PostCard';
 import { Loader } from '../../components/Loader';
 import { AlertMessage } from '../../components/AlertMessage';
 import { BaseModal } from '../../components/BaseModal';
-import { AuthForm } from '../../components/AuthForm';
 
 import { postsRequest } from '../../redux/actions/posts';
 import { RootState } from '../../redux/reducers/rootReducer';

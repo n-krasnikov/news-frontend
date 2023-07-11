@@ -1,14 +1,14 @@
 import { put, call, takeEvery } from "redux-saga/effects";
 import { AxiosError } from "axios";
 
-import { signIn } from "../../api/postAuth";
+import { auth } from "../../api/postAuth";
 import { signInFailed, authReceived } from "../actions/auth";
 import { SIGN_IN_REQUEST } from "../actionTypes";
 import { IAuthActions } from "../../vite-env";
 
 function* onSignIn({ payload }: IAuthActions ) {
   try {
-    const  { data }  = yield call(signIn, payload);
+    const  { data }  = yield call(auth, 'signin', payload);
     if (data?.access) localStorage.setItem('token', data?.access);
     yield put(authReceived(payload));
     

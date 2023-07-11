@@ -1,4 +1,4 @@
-import { IModal, IModalState } from "../../vite-env";
+import { IModal } from "../../vite-env";
 import { TOGGLE_MODAL } from "../actionTypes";
 
 export const toggleModal = (payload: IModal) => ({
