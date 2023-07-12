@@ -1,6 +1,5 @@
 import { useEffect, type FC, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../redux/reducers/rootReducer';
 
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -10,12 +9,13 @@ import Typography from '@mui/material/Typography';
 import { IAuthState } from '../../vite-env';
 import { TOKEN } from './constants';
 import { toggleModal } from '../../redux/actions/modal';
+import { RootState } from '../../redux/reducers/rootReducer';
 import { verifyRequested, logout } from '../../redux/actions/auth';
 import { 
   SIGN_IN, 
   SIGN_UP, 
   LOGOUT, 
-  GREETING 
+  GREETING,
 } from '../../locales.json'
 
 import './Header.css'

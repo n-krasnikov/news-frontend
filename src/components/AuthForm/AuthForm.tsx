@@ -12,10 +12,11 @@ import { SEVERITY_ERROR } from '../../pages/MainPage/constants';
 import { SIGN_UP } from '../../locales.json';
 import { 
   Values, 
+  initialValues,
   SignUpSchema, 
   SignInSchema, 
   SignInFields, 
-  SignUpFields 
+  SignUpFields,
 } from './constants';
 
 import './AuthForm.css'
@@ -28,14 +29,9 @@ export const AuthForm: FC<IAuth> = ({modalType}) => {
   const isSignUp = modalType === SIGN_UP;
   const currentFields = isSignUp ? SignUpFields : SignInFields;
   const validationSchema = isSignUp ? SignUpSchema : SignInSchema;
-  const initialValues = {
-    username: '',
-    password: '',
-    email: '',
-  };
 
   return (
-    <Fragment>
+    <>
       <Typography variant='h5' className='form-title'>{ modalType }</Typography>    
       <Typography variant='body2' className='form-error'>{ error }</Typography> 
       <Formik
@@ -74,6 +70,6 @@ export const AuthForm: FC<IAuth> = ({modalType}) => {
           </Form>
         )}
       </Formik>
-    </Fragment>
+    </>
   );
 };

@@ -6,6 +6,12 @@ export interface Values {
   email: string;
 }
 
+export const initialValues = {
+  username: '',
+  password: '',
+  email: '',
+};
+
 const emailField = {
   "type": "email",
   "name": "email", 
