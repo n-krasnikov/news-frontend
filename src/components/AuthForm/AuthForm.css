@@ -1,0 +1,38 @@
+.form {
+  margin: 10px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+.form > .form-field {
+  border: none;
+  border-bottom: 2px solid #03A696;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: transparent;
+}
+
+.form > [type="submit"] {
+  font-weight: 500;
+  background-color: #1B2B40;
+  border: 1px solid #03A696;
+}
+
+.form > [type="submit"]:hover {
+  font-weight: 900;
+  background-color: #03A696;
+}
+
+.form-title {
+  text-align: center;
+}
+.form-error {
+  color: #F23054;
+  text-align: center;
+}
+
+.form > .form-field::placeholder {
+  font-weight: 500;
+  color: white;
+}

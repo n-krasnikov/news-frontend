@@ -1,0 +1,32 @@
+.card-content > span {
+  margin: 0 5px;
+  padding: 5px;
+  background-color: #F23054;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.7rem;
+}
+
+.card-content > .post-title {
+  font-weight: 600;
+  margin: 10px 0 0 0;
+}
+
+.card-content > .post-desc {
+  font-style: italic;
+}
+
+.card-footer > button {
+  font-weight: 500;
+  margin: 0 5px;
+  border: 1px solid #03A696;
+  background-color: #03A696; 
+  color: white;
+  margin: 0 0 10px 0;
+}
+
+.card-footer > button:hover {
+  font-weight: 900;
+  border-color: black;
+  background-color: #1B2B40;
+}

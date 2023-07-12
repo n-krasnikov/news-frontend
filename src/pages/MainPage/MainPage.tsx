@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import PostCard from '../../components/PostCard/PostCard';
 import { Loader } from '../../components/Loader';
 import { AlertMessage } from '../../components/AlertMessage';
+import { BaseModal } from '../../components/BaseModal';
 
 import { postsRequest } from '../../redux/actions/posts';
 import { RootState } from '../../redux/reducers/rootReducer';
@@ -20,7 +21,7 @@ export const MainPage: FC = () => {
   useEffect(() => {
     dispatch(postsRequest());
   }, []);
-
+  
   if (isLoading) return <Loader />;
   if (error) return <AlertMessage severity={SEVERITY_ERROR} message={error}/>;
 
@@ -42,6 +43,7 @@ export const MainPage: FC = () => {
           authorId={post.author_id}
         />))
       }
+      <BaseModal />
     </div>
   );
 }
