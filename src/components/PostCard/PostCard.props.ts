@@ -6,4 +6,5 @@ export interface IPostCard {
   image?: string;
   author: string;
   authorId: number;
+  isLoggedIn: boolean;
 }

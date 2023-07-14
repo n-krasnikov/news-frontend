@@ -1,5 +1,6 @@
 import { useEffect, type FC, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -24,6 +25,7 @@ export const Header: FC = () => {
   const buttons = [SIGN_IN, SIGN_UP];
   const { isLoggedIn, userData }: IAuthState = useSelector((store: RootState) => store.auth);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const openModal = (type: string) => {
     dispatch(toggleModal({ status: true, type}));
@@ -31,6 +33,7 @@ export const Header: FC = () => {
   const logoutDispatch = ()=>{
     localStorage.removeItem(TOKEN);
     dispatch(logout());
+    navigate('/');
   }
 
   useEffect(() => {
@@ -50,7 +53,11 @@ export const Header: FC = () => {
             >
             {LOGOUT}
             </Button>
-            <Typography variant="body1" className='username'>
+            <Typography 
+              onClick={() => navigate(`/users/${userData?.id}`)} 
+              variant="body1" 
+              className='username'
+            >
               {GREETING}{userData?.username}
             </Typography>
           </Fragment>

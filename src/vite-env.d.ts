@@ -6,23 +6,9 @@ interface IUser {
   avatar: string
 }
 
-export interface IPostState {
-  posts: Array<IPost>,
+interface IState {
   isLoading: boolean,
   error: string | null,
-}
-
-export interface IModalState {
-  isModalOpen: boolean
-  modalType?: string
-}
-
-export interface IAuthState {
-  userData: IUser | null,
-  isLoading: boolean,
-  isLoggedIn: boolean,
-  error: string | null,
-  authErrors: object | null,
 }
 
 export interface IPost {
@@ -46,9 +32,48 @@ export interface IAuth {
   username?: string
 }
 
+export interface ICurrentUser {
+  user: IUser
+  posts: Array<IPost>
+}
+
 export interface IPostActions {
   type: string
   payload?: IPost
+  error?: string
+}
+
+export interface IPostState extends IState {
+  posts: Array<IPost>,
+}
+
+export interface IAuthState extends IState{
+  userData: IUser | null,
+  isLoggedIn: boolean,
+  authErrors: object | null,
+}
+
+export interface ICurrentUserState extends IState{
+  currentUser: IUser | null,
+  userPosts: Array<IPost>,
+  error: any;
+  
+}
+
+export interface IModalState {
+  isModalOpen: boolean
+  modalType?: string
+}
+
+export interface IAuthActions {
+  type: string
+  payload?: IAuthUser
+  error?: string
+}
+
+export interface ICurrentUserActions {
+  type: string
+  payload?: ICurrentUser
   error?: string
 }
 
@@ -56,9 +81,3 @@ export interface IModalAction {
   type: string
   payload: IModal
 }
-
-export interface IAuthActions {
-  type: string
-  payload?: IAuthUser
-  error?: string
-  }

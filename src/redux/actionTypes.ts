@@ -12,3 +12,7 @@ export const SIGN_UP_FAILED = 'SIGN_UP_FAILED';
 export const VERIFY_REQUEST = 'VERIFY_REQUEST';
 export const VERIFY_SUCCESS = 'VERIFY_SUCCESS';
 export const LOGOUT = 'LOGOUT';
+
+export const USER_REQUESTED = 'USER_REQUESTED';
+export const USER_RECEIVED = 'USER_RECEIVED';
+export const USER_FAILED = 'USER_FAILED';
