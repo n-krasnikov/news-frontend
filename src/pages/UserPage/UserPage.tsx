@@ -47,7 +47,6 @@ export const UserPage: FC = () => {
             tags={post.tags}
             author={post.author}
             authorId={post.author_id}
-            isLoggedIn={false}
           />))
         }
       </div>
