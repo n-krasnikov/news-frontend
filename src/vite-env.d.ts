@@ -47,13 +47,13 @@ export interface IPostState extends IState {
   posts: Array<IPost>,
 }
 
-export interface IAuthState extends IState{
+export interface IAuthState extends IState {
   userData: IUser | null,
   isLoggedIn: boolean,
   authErrors: object | null,
 }
 
-export interface ICurrentUserState extends IState{
+export interface ICurrentUserState extends IState {
   currentUser: IUser | null,
   userPosts: Array<IPost>,
   error: any;

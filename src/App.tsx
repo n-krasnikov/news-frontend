@@ -1,6 +1,5 @@
 import { useRoutes } from "react-router-dom";
 
-// import { Header } from './components/Header';
 import { Layout } from "./components/Layout";
 import { MainPage } from './pages/MainPage';
 import { UserPage } from './pages/UserPage';

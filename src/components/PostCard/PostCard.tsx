@@ -25,8 +25,11 @@ const PostCard: FC<IPostCard> = ({
   isLoggedIn,
  }) => {
 
-const tagArr = tags.split(", ")
-const navigate = useNavigate();
+  const tagArr = tags.split(", ")
+  const navigate = useNavigate();
+  const goToUserPage = () => {
+    navigate(`/users/${authorId}`)
+  }
 
   return (
     <Card sx={style}>
@@ -52,7 +55,7 @@ const navigate = useNavigate();
       </CardContent>
       <CardActions className='card-footer'>
         <Button 
-          onClick={() => navigate(`/users/${authorId}`)}  
+          onClick={goToUserPage}  
           disabled={!isLoggedIn} 
           size="small"
         >

@@ -7,7 +7,6 @@ import { userFailed, userReceived } from "../actions/user";
 import { ICurrentUserActions } from "../../vite-env";
 
 function* onLoadUser({ payload }: ICurrentUserActions) {
- 
   try {
     const { data } = yield call(getUser, payload);
     yield put(userReceived(data));

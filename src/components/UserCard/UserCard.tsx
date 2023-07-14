@@ -8,6 +8,10 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 import { IUserCard } from './UserCard.props';
+import { 
+  EDIT_PROFILE,
+  CREATE_POST,
+} from '../../locales.json'
 
 import defaultImage from '../../assets/react.svg';
 import './UserCard.css';
@@ -24,7 +28,6 @@ export const UserCard: FC<IUserCard> = ({
       <CardMedia
         className='avatar'
         component="img"
-        sx={{ width: 150, borderRadius: 5 }}
         image={avatar || defaultImage}
         alt="Live from space album cover"
       />
@@ -42,11 +45,11 @@ export const UserCard: FC<IUserCard> = ({
         </Typography>
         <Typography variant="body2" className='post-desc'>
             Author of {postsCount} posts
-          </Typography>
+        </Typography>
         {isOwnerPage && (
           <CardActions className='card-footer'>
-            <Button>Edit Profile</Button>
-            <Button>Write Post</Button>
+            <Button>{EDIT_PROFILE}</Button>
+            <Button>{CREATE_POST}</Button>
           </CardActions>
         )}
       </CardContent>

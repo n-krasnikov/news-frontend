@@ -5,12 +5,13 @@
   width: 40%;
   margin: 20px;
   position: fixed;
-  /* left: 90%; */
-  /* translate: -100% 0%; */
 }
 
 .user-card > .avatar {
   padding: 20px;
+  width: 150px;
+  height: 150px;
+  border-radius: 5px
 }
 
 .user-card > .card-content {

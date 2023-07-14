@@ -36,6 +36,10 @@ export const Header: FC = () => {
     navigate('/');
   }
 
+  const goToUserPage = () => {
+    navigate(`/users/${userData?.id}`)
+  }
+
   useEffect(() => {
     if (isLoggedIn) dispatch(verifyRequested());
   }, [isLoggedIn]);
@@ -54,7 +58,7 @@ export const Header: FC = () => {
             {LOGOUT}
             </Button>
             <Typography 
-              onClick={() => navigate(`/users/${userData?.id}`)} 
+              onClick={goToUserPage} 
               variant="body1" 
               className='username'
             >
