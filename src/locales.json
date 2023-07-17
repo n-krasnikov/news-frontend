@@ -4,5 +4,7 @@
   "SIGN_IN": "Sign In",
   "SIGN_UP": "Sign Up",
   "LOGOUT": "Log Out",
-  "GREETING": "Hi, "
+  "GREETING": "Hi, ",
+  "EDIT_PROFILE": "Edit Profile",
+  "CREATE_POST": "Create Post"
 }

@@ -25,6 +25,10 @@
   margin: 0 0 10px 0;
 }
 
+.card-footer > button:disabled{
+  color: white;
+}
+
 .card-footer > button:hover {
   font-weight: 900;
   border-color: black;

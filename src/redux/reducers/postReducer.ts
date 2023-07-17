@@ -9,7 +9,7 @@ const initialState: IPostState = {
 
 
 export default function postReducer(state: IPostState = initialState, action: IPostActions) {
- switch (action.type) {
+  switch (action.type) {
    case POSTS_REQUESTED:
      return {
        ...state,

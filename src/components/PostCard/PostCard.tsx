@@ -1,4 +1,5 @@
 import { type FC, memo } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -20,9 +21,15 @@ const PostCard: FC<IPostCard> = ({
   tags,
   image,
   author,
+  authorId,
+  isLoggedIn,
  }) => {
 
-const tagArr = tags.split(", ")
+  const tagArr = tags.split(", ")
+  const navigate = useNavigate();
+  const goToUserPage = () => {
+    navigate(`/users/${authorId}`)
+  }
 
   return (
     <Card sx={style}>
@@ -47,7 +54,14 @@ const tagArr = tags.split(", ")
         </Typography>
       </CardContent>
       <CardActions className='card-footer'>
-        <Button size="small">{author}</Button>
+        <Button 
+          onClick={goToUserPage}  
+          disabled={!isLoggedIn} 
+          size="small"
+        >
+          {author}
+        </Button>
+        
       </CardActions>
     </Card>
   );
