@@ -24,8 +24,15 @@ export const UserPage: FC = () => {
     if (id) dispatch(userRequest(id));
   }, [id]);
 
+  if (userPosts?.length !== 0) {
+    userPosts.sort((a, b) => {
+      if (a.id > b.id) return -1;
+      return 0;
+    });
+  }
+
   if (isLoading) return <Loader />;
-  if (error) return <ErrorPage status={error.status} message={error.data.detail}/>;
+  if (error && error instanceof Object) return <ErrorPage status={error?.status} message={error?.data?.detail}/>;
 
   return (
     <>
@@ -37,7 +44,7 @@ export const UserPage: FC = () => {
         postsCount={userPosts?.length}
       />
       <div className="posts-container">
-        {userPosts.map((post: IPost) =>(
+        {userPosts?.map((post: IPost) =>(
           <PostCard
             key={post.id}
             id={post.id}

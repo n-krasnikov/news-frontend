@@ -12,6 +12,9 @@ import { TOKEN } from './constants';
 import { toggleModal } from '../../redux/actions/modal';
 import { RootState } from '../../redux/reducers/rootReducer';
 import { verifyRequested, logout } from '../../redux/actions/auth';
+import HomeIcon from '@mui/icons-material/Home';
+import LogOutIcon from '@mui/icons-material/DirectionsRun';
+import Avatar from '@mui/material/Avatar';
 import { 
   SIGN_IN, 
   SIGN_UP, 
@@ -20,6 +23,7 @@ import {
 } from '../../locales.json'
 
 import './Header.css'
+import defaultImage from '../../assets/react.svg';
 
 export const Header: FC = () => {
   const buttons = [SIGN_IN, SIGN_UP];
@@ -36,6 +40,10 @@ export const Header: FC = () => {
     navigate('/');
   }
 
+  const goToMainPage = () => {
+    navigate('/');
+  }
+
   const goToUserPage = () => {
     navigate(`/users/${userData?.id}`)
   }
@@ -47,37 +55,35 @@ export const Header: FC = () => {
   return (
     <AppBar position="static">
       <Toolbar className='header'>
-        {isLoggedIn ? (
-          <Fragment>
-            <Button 
-              variant="contained" 
-              size="medium" 
-              onClick={() => logoutDispatch()} 
-              className='button'
-            >
-            {LOGOUT}
-            </Button>
-            <Typography 
-              onClick={goToUserPage} 
-              variant="body1" 
-              className='username'
-            >
-              {GREETING}{userData?.username}
-            </Typography>
-          </Fragment>
-        ):
+        <HomeIcon onClick={goToMainPage} className='icon'/>
+          <div className='auth-block'>
+          {isLoggedIn ? (
+            <Fragment>
+              <Avatar 
+                onClick={goToUserPage}
+                alt={userData?.username} 
+                src={userData?.avatar || defaultImage} 
+                className='icon avatar'
+                />
+              <LogOutIcon 
+                className='icon'
+                onClick={logoutDispatch}
+                />
+            </Fragment>
+          ):
           buttons.map((type: string) =>(
             <Button 
-              variant="contained" 
-              size="medium" 
-              onClick={() => openModal(type)} 
-              className='button'
-              key={type}
+            variant="contained" 
+            size="medium" 
+            onClick={() => openModal(type)} 
+            className='button'
+            key={type}
             >
-            {type}
-            </Button>
-          )
-        )}
+              {type}
+              </Button>
+            )
+            )}
+          </div>
       </Toolbar>
     </AppBar>
   );

@@ -1,5 +1,12 @@
-import { USER_REQUESTED, USER_RECEIVED, USER_FAILED } from '../actionTypes';
-import { ICurrentUserActions, ICurrentUserState } from '../../vite-env';
+import { ICurrentUserActions, ICurrentUserState, IPost } from '../../vite-env';
+import { 
+  USER_REQUESTED, 
+  USER_RECEIVED, 
+  USER_FAILED,
+  POST_CREATE_REQUEST, 
+  POST_CREATE_SUCCESS,
+  POST_CREATE_FAILED,
+} from '../actionTypes';
 
 const initialState: ICurrentUserState = {
  currentUser: null,
@@ -32,6 +39,25 @@ export default function userReducer(state: ICurrentUserState = initialState, act
         isLoading: false,
         error: action.error,
       };
+    case POST_CREATE_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      }
+    case POST_CREATE_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        userPosts: [...state.userPosts, action.payload],
+        error: null,
+      };
+    case POST_CREATE_FAILED:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.error,
+      }
     default: return state;
   }
 }

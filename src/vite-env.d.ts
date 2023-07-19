@@ -21,6 +21,13 @@ export interface IPost {
   author_id: number;
 }
 
+export interface IPostCreate {
+  title: string;
+  text: string;
+  tags: string;
+  image?: blob;
+}
+
 export interface IModal {
   status: boolean
   type?: string
@@ -80,4 +87,10 @@ export interface ICurrentUserActions {
 export interface IModalAction {
   type: string
   payload: IModal
+}
+
+export interface IPostCreateAction {
+  type: string
+  payload?: IPostCreate
+  error?: string
 }

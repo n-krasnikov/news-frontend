@@ -15,6 +15,8 @@ import {
 
 import defaultImage from '../../assets/react.svg';
 import './UserCard.css';
+import { useDispatch } from 'react-redux';
+import { toggleModal } from '../../redux/actions/modal';
 
 export const UserCard: FC<IUserCard> = ({
   email,
@@ -23,6 +25,14 @@ export const UserCard: FC<IUserCard> = ({
   postsCount,
   isOwnerPage,
 }) => {
+  const dispatch = useDispatch();
+
+  const openModal = (type: string) => {
+    dispatch(toggleModal({ status: true, type}));
+  }
+
+  const type = "Add post";
+
   return (
     <Card className='user-card'>
       <CardMedia
@@ -49,7 +59,7 @@ export const UserCard: FC<IUserCard> = ({
         {isOwnerPage && (
           <CardActions className='card-footer'>
             <Button>{EDIT_PROFILE}</Button>
-            <Button>{CREATE_POST}</Button>
+            <Button onClick={() => openModal(type)}>{CREATE_POST}</Button>
           </CardActions>
         )}
       </CardContent>

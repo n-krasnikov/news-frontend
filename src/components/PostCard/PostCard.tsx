@@ -25,7 +25,7 @@ const PostCard: FC<IPostCard> = ({
   isLoggedIn,
  }) => {
 
-  const tagArr = tags.split(", ")
+  const tagArr = tags.split(",")
   const navigate = useNavigate();
   const goToUserPage = () => {
     navigate(`/users/${authorId}`)

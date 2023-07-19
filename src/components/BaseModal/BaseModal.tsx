@@ -8,6 +8,7 @@ import { IModalState } from '../../vite-env';
 import { RootState } from '../../redux/reducers/rootReducer';
 import { toggleModal } from '../../redux/actions/modal';
 import { AuthForm } from '../AuthForm';
+import { EditForm } from '../PostForm';
 import { style } from './constants';
 
 import './BaseModal.css'
@@ -27,7 +28,8 @@ export const BaseModal = () => {
         onClose={handleClose}
       >
         <Box sx={style}>
-          <AuthForm modalType={modalType ?? ''} />
+          {modalType === 'Add post' && <EditForm modalType={modalType ?? ''}/>}
+          {modalType?.includes("Sign") && <AuthForm modalType={modalType ?? ''} />}
         </Box>
       </Modal>
     </Fragment>

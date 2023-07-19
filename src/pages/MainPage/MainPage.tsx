@@ -19,6 +19,13 @@ export const MainPage: FC = () => {
   const { isLoggedIn }: IAuthState = useSelector((store: RootState) => store.auth);
   const dispatch = useDispatch();
   
+  if (posts?.length !== 0) {
+    posts.sort((a, b) => {
+      if (a.id > b.id) return -1;
+      return 0;
+    });
+  }
+
   useEffect(() => {
     dispatch(postsRequest());
   }, []);
