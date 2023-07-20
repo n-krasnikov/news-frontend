@@ -1,7 +1,8 @@
-import { Fragment, type FC, useState, SetStateAction, ChangeEvent } from 'react';
+import { Fragment, type FC, useState } from 'react';
 import { Formik, Form, Field } from 'formik';
-import Typography from '@mui/material/Typography';
 import { useDispatch, useSelector } from 'react-redux';
+
+import Typography from '@mui/material/Typography';
 
 import { stringOfUniques } from '../../helpers';
 import { ICurrentUserState } from '../../vite-env';
@@ -19,7 +20,7 @@ import {
 
 import './PostForm.css'
 
-export const EditForm: FC<IPostForm> = ({modalType}) => {
+export const PostForm: FC<IPostForm> = ({modalType}) => {
   const dispatch = useDispatch();
   const [image, setImage] = useState<File | null>(null);
 
@@ -38,15 +39,15 @@ export const EditForm: FC<IPostForm> = ({modalType}) => {
 
   return (
     <>
-      <Typography variant='h5' className='form-title'>{ modalType }</Typography>
-      <Typography variant='body2' className='form-error'>{ error }</Typography>     
+      <Typography variant="h5" className="form-title">{ modalType }</Typography>
+      <Typography variant="body2" className="form-error">{ error }</Typography>     
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={(values)=> submitForm(values)}
       >
         {({errors, touched}) =>(
-          <Form className='form'>
+          <Form className="form">
             {fields.map(({ 
               as,
               name,
@@ -62,7 +63,10 @@ export const EditForm: FC<IPostForm> = ({modalType}) => {
                   className="form-field" 
                 />
                 {touched[name as keyof object] && errors[name as keyof object] &&
-                  <AlertMessage severity={SEVERITY_ERROR} message={errors[name as keyof object] as string}/>
+                  <AlertMessage 
+                    severity={SEVERITY_ERROR} 
+                    message={errors[name as keyof object] as string}
+                  />
                 }
               </Fragment>
             ))}

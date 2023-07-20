@@ -5,21 +5,18 @@ import { useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import Avatar from '@mui/material/Avatar';
+import LogOutIcon from '@mui/icons-material/DirectionsRun';
+import HomeIcon from '@mui/icons-material/Home';
 
-import { IAuthState } from '../../vite-env';
 import { TOKEN } from './constants';
+import { IAuthState } from '../../vite-env';
 import { toggleModal } from '../../redux/actions/modal';
 import { RootState } from '../../redux/reducers/rootReducer';
 import { verifyRequested, logout } from '../../redux/actions/auth';
-import HomeIcon from '@mui/icons-material/Home';
-import LogOutIcon from '@mui/icons-material/DirectionsRun';
-import Avatar from '@mui/material/Avatar';
 import { 
   SIGN_IN, 
   SIGN_UP, 
-  LOGOUT, 
-  GREETING,
 } from '../../locales.json'
 
 import './Header.css'
@@ -34,18 +31,19 @@ export const Header: FC = () => {
   const openModal = (type: string) => {
     dispatch(toggleModal({ status: true, type}));
   }
-  const logoutDispatch = ()=>{
-    localStorage.removeItem(TOKEN);
-    dispatch(logout());
-    navigate('/');
-  }
-
+  
   const goToMainPage = () => {
     navigate('/');
   }
 
   const goToUserPage = () => {
     navigate(`/users/${userData?.id}`)
+  }
+
+  const logoutDispatch = ()=>{
+    localStorage.removeItem(TOKEN);
+    dispatch(logout());
+    goToMainPage();
   }
 
   useEffect(() => {
@@ -58,30 +56,29 @@ export const Header: FC = () => {
         <HomeIcon onClick={goToMainPage} className='icon'/>
           <div className='auth-block'>
           {isLoggedIn ? (
-            <Fragment>
+            <>
               <Avatar 
                 onClick={goToUserPage}
                 alt={userData?.username} 
                 src={userData?.avatar || defaultImage} 
                 className='icon avatar'
-                />
+              />
               <LogOutIcon 
                 className='icon'
                 onClick={logoutDispatch}
-                />
-            </Fragment>
-          ):
-          buttons.map((type: string) =>(
-            <Button 
-            variant="contained" 
-            size="medium" 
-            onClick={() => openModal(type)} 
-            className='button'
-            key={type}
-            >
-              {type}
+              />
+            </>):
+            buttons.map((type: string) =>(
+              <Button 
+                variant="contained" 
+                size="medium" 
+                onClick={() => openModal(type)} 
+                className='button'
+                key={type}
+              >
+                {type}
               </Button>
-            )
+              )
             )}
           </div>
       </Toolbar>

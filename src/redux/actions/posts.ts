@@ -27,7 +27,7 @@ export const postCreate = (payload: IPostCreate) => ({
   payload,
 })
 
-export const postCreated = (payload: IPost) => ({
+export const postCreateSuccess = (payload: IPost) => ({
   type: POST_CREATE_SUCCESS,
   payload,
 });

@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { ErrorPage } from '../ErrorPage';
 import { UserCard } from '../../components/UserCard';
 import { Loader } from '../../components/Loader';
-import PostCard from '../../components/PostCard/PostCard';
+import { PostCard } from '../../components/PostCard';
 import { IAuthState, ICurrentUserState, IPost } from '../../vite-env';
 import { RootState } from '../../redux/reducers/rootReducer';
 import { userRequest } from '../../redux/actions/user';
@@ -23,13 +23,6 @@ export const UserPage: FC = () => {
   useEffect(() => {
     if (id) dispatch(userRequest(id));
   }, [id]);
-
-  if (userPosts?.length !== 0) {
-    userPosts.sort((a, b) => {
-      if (a.id > b.id) return -1;
-      return 0;
-    });
-  }
 
   if (isLoading) return <Loader />;
   if (error && error instanceof Object) return <ErrorPage status={error?.status} message={error?.data?.detail}/>;

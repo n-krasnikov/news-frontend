@@ -3,7 +3,7 @@ export const stringOfUniques = (value: string) => {
     .split(',')
     .reduce((acc: string[], item: string) => {
       const trimmedTag = item.trim();
-      if (acc.includes(trimmedTag) || trimmedTag.length === 0) return acc;
+      if (!trimmedTag || acc.includes(trimmedTag)) return acc;
       return [...acc, trimmedTag]
     }, [])
     .join()

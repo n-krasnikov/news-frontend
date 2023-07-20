@@ -6,5 +6,7 @@
   "LOGOUT": "Log Out",
   "GREETING": "Hi, ",
   "EDIT_PROFILE": "Edit Profile",
-  "CREATE_POST": "Create Post"
+  "CREATE_POST": "Create Post",
+  "ADD_POST": "Add Post",
+  "AVATAR_ALT": "Falied to load avatar :("
 }
