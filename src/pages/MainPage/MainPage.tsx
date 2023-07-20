@@ -1,7 +1,7 @@
 import { type FC, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import PostCard from '../../components/PostCard/PostCard';
+import { PostCard } from '../../components/PostCard';
 import { Loader } from '../../components/Loader';
 import { AlertMessage } from '../../components/AlertMessage';
 

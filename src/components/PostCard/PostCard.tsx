@@ -15,7 +15,7 @@ import { style } from './constants';
 import defaultImage from '../../assets/react.svg';
 import './PostCard.css'
 
-export const PostCard: FC<IPostCard> = ({ 
+const PostCard: FC<IPostCard> = ({ 
   title,
   text,
   tags,
@@ -25,8 +25,9 @@ export const PostCard: FC<IPostCard> = ({
   isLoggedIn,
  }) => {
 
-  const tagArr = tags.split(',')
+  const tagArr = tags.split(',');  
   const navigate = useNavigate();
+  
   const goToUserPage = () => {
     navigate(`/users/${authorId}`)
   }
