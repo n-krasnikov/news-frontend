@@ -3,7 +3,7 @@ import { IModalState, IModalAction } from '../../vite-env';
 
 const initialState: IModalState = {
   isModalOpen: false,
-  modalType: '',
+  modalType: 'Sign In',
 }
 
 const modalReducer = (state = initialState, action: IModalAction) => {

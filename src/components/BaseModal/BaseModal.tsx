@@ -29,8 +29,8 @@ export const BaseModal = () => {
         onClose={handleClose}
       >
         <Box sx={style}>
-          {modalType === ADD_POST && <PostForm modalType={modalType ?? ''}/>}
-          {modalType?.includes(SIGN) && <AuthForm modalType={modalType ?? ''} />}
+          {modalType === ADD_POST && <PostForm />}
+          {modalType?.includes(SIGN) && <AuthForm />}
         </Box>
       </Modal>
     </Fragment>

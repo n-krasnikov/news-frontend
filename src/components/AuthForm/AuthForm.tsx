@@ -4,8 +4,7 @@ import Typography from '@mui/material/Typography';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/reducers/rootReducer';
 
-import { IAuthState } from '../../vite-env';
-import { IAuth } from './AuthForm.props';
+import { IAuthState, IModalState } from '../../vite-env';
 import { AlertMessage } from '../../components/AlertMessage';
 import { signUpRequested, signInRequested } from '../../redux/actions/auth';
 import { SEVERITY_ERROR } from '../../pages/MainPage/constants';
@@ -21,10 +20,11 @@ import {
 
 import './AuthForm.css'
 
-export const AuthForm: FC<IAuth> = ({modalType}) => {
+export const AuthForm: FC = () => {
   const dispatch = useDispatch();
 
   const { error, authErrors }: IAuthState = useSelector((store: RootState) => store.auth);
+  const { modalType }: IModalState = useSelector((store: RootState) => store.modal);
 
   const isSignUp = modalType === SIGN_UP;
   const currentFields = isSignUp ? SignUpFields : SignInFields;

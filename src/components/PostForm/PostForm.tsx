@@ -5,12 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import Typography from '@mui/material/Typography';
 
 import { stringOfUniques } from '../../helpers';
-import { ICurrentUserState } from '../../vite-env';
-import { IPostForm } from './PostForm.props';
+import { ICurrentUserState, IModalState } from '../../vite-env';
 import { postCreate } from '../../redux/actions/posts';
 import { RootState } from '../../redux/reducers/rootReducer';
 import { AlertMessage } from '../AlertMessage';
-import { SEVERITY_ERROR } from '../../pages/MainPage/constants';
 import { 
   IFormValues,
   INIT_VALUES,
@@ -20,11 +18,13 @@ import {
 
 import './PostForm.css'
 
-export const PostForm: FC<IPostForm> = ({modalType}) => {
+export const PostForm: FC = () => {
+  const { error }: ICurrentUserState = useSelector((store: RootState) => store.user);
+  const { modalType }: IModalState = useSelector((store: RootState) => store.modal);
+  
   const dispatch = useDispatch();
   const imageRef = useRef<HTMLInputElement>(null);
-  const { error }: ICurrentUserState = useSelector((store: RootState) => store.user);
-
+  
   const submitForm = (formValues: IFormValues) => {
     formValues.tags = stringOfUniques(formValues.tags);
     const uploadedImage = imageRef.current?.files?.length

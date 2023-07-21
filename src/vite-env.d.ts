@@ -68,7 +68,7 @@ export interface ICurrentUserState extends IState {
 
 export interface IModalState {
   isModalOpen: boolean
-  modalType?: 'Sign In' | 'Sign Up' | 'Add Post' | 'Edit Profile' | ''
+  modalType?: 'Sign In' | 'Sign Up' | 'Add Post' | 'Edit Profile'
 }
 
 export interface IAuthActions {
