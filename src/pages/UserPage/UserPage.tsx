@@ -36,7 +36,7 @@ export const UserPage: FC = () => {
         avatar={currentUser?.avatar}
         postsCount={userPosts?.length}
       />
-      <div className="posts-container">
+      <div className='posts-container'>
         {userPosts?.map((post: IPost) =>(
           <PostCard
             key={post.id}

@@ -1,4 +1,4 @@
-import { IPost, IPostCreate } from "../../vite-env";
+import { IPost, IPostCreate } from '../../vite-env';
 import { 
   POSTS_REQUESTED, 
   POSTS_RECEIVED, 

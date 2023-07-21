@@ -35,30 +35,30 @@ const PostCard: FC<IPostCard> = ({
   return (
     <Card sx={style}>
       <CardMedia
-        component="img"
+        component='img'
         alt={locales.IMAGE_ALT}
-        height="140"
+        height='140'
         image={image || defaultImage}
       />
-      <CardContent className="card-content">
+      <CardContent className='card-content'>
         {tagArr.map((tag) => <span key={tag} >{tag}</span>)}
         <Typography 
           gutterBottom 
-          variant="h5" 
-          component="div" 
-          className="post-title"
+          variant='h5' 
+          component='div' 
+          className='post-title'
         >
          {title}
         </Typography>
-        <Typography variant="body2" className="post-desc">
+        <Typography variant='body2' className='post-desc'>
           {text}
         </Typography>
       </CardContent>
-      <CardActions className="card-footer">
+      <CardActions className='card-footer'>
         <Button 
           onClick={goToUserPage}  
           disabled={!isLoggedIn} 
-          size="small"
+          size='small'
         >
           {author}
         </Button>

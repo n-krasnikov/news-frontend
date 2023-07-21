@@ -25,7 +25,7 @@ export interface IPostCreate {
   title: string;
   text: string;
   tags: string;
-  image?: blob;
+  image?: File | null;
 }
 
 export interface IModal {
@@ -64,12 +64,11 @@ export interface ICurrentUserState extends IState {
   currentUser: IUser | null,
   userPosts: Array<IPost>,
   error: any;
-  
 }
 
 export interface IModalState {
   isModalOpen: boolean
-  modalType?: string
+  modalType?: 'Sign In' | 'Sign Up' | 'Add Post' | 'Edit Profile' | ''
 }
 
 export interface IAuthActions {

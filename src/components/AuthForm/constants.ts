@@ -13,21 +13,21 @@ export const initialValues = {
 };
 
 const emailField = {
-  "type": "email",
-  "name": "email", 
-  "placeholder": "email"
+  'type': 'email',
+  'name': 'email', 
+  'placeholder': 'email'
 };
 
 const passwordField = {
-  "type": "password",
-  "name": "password", 
-  "placeholder": "password"
+  'type': 'password',
+  'name': 'password', 
+  'placeholder': 'password'
 }
 
 const usernameField = {
-  "type": "text",
-  "name": "username", 
-  "placeholder": "username"
+  'type': 'text',
+  'name': 'username', 
+  'placeholder': 'username'
 }
 
 const usernameValidation = string()

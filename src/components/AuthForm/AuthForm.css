@@ -13,13 +13,13 @@
   background-color: transparent;
 }
 
-.form > [type="submit"] {
+.form > [type='submit'] {
   font-weight: 500;
   background-color: #1B2B40;
   border: 1px solid #03A696;
 }
 
-.form > [type="submit"]:hover {
+.form > [type='submit']:hover {
   font-weight: 900;
   background-color: #03A696;
 }

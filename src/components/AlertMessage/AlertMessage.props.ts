@@ -1,4 +1,4 @@
 export interface IAlert {
-  severity: "error" | "info";
+  severity: 'error' | 'info';
   message: string;
 }

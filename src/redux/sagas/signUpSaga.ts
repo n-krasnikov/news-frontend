@@ -1,10 +1,10 @@
-import { put, call, takeEvery } from "redux-saga/effects";
-import { AxiosError } from "axios";
+import { put, call, takeEvery } from 'redux-saga/effects';
+import { AxiosError } from 'axios';
 
-import { auth } from "../../api/postAuth";
-import { signUpFailed, signInRequested } from "../actions/auth";
-import { SIGN_UP_REQUEST } from "../actionTypes";
-import { IAuthActions } from "../../vite-env";
+import { auth } from '../../api/postAuth';
+import { signUpFailed, signInRequested } from '../actions/auth';
+import { SIGN_UP_REQUEST } from '../actionTypes';
+import { IAuthActions } from '../../vite-env';
 
 function* onRegistration({ payload }: IAuthActions ) {
   try {

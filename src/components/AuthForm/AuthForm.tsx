@@ -52,9 +52,9 @@ export const AuthForm: FC<IAuth> = ({modalType}) => {
                 <Field 
                   name={name} 
                   type={type} 
-                  variant="standard" 
+                  variant='standard' 
                   placeholder={placeholder} 
-                  className="form-field"
+                  className='form-field'
                 />
                 {touched[name as keyof object] && errors[name as keyof object] &&
                   <AlertMessage severity={SEVERITY_ERROR} message={errors[name as keyof object] as string}/>
@@ -65,7 +65,7 @@ export const AuthForm: FC<IAuth> = ({modalType}) => {
               </Fragment>
             ))}
             
-            <button type="submit">{modalType}</button>
+            <button type='submit'>{modalType}</button>
            
           </Form>
         )}

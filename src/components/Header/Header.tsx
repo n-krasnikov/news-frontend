@@ -9,21 +9,16 @@ import Avatar from '@mui/material/Avatar';
 import LogOutIcon from '@mui/icons-material/DirectionsRun';
 import HomeIcon from '@mui/icons-material/Home';
 
-import { TOKEN } from './constants';
+import { TOKEN, BUTTONS } from './constants';
+import defaultImage from '../../assets/react.svg';
 import { IAuthState } from '../../vite-env';
 import { toggleModal } from '../../redux/actions/modal';
 import { RootState } from '../../redux/reducers/rootReducer';
 import { verifyRequested, logout } from '../../redux/actions/auth';
-import { 
-  SIGN_IN, 
-  SIGN_UP, 
-} from '../../locales.json'
 
 import './Header.css'
-import defaultImage from '../../assets/react.svg';
 
 export const Header: FC = () => {
-  const buttons = [SIGN_IN, SIGN_UP];
   const { isLoggedIn, userData }: IAuthState = useSelector((store: RootState) => store.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -51,7 +46,7 @@ export const Header: FC = () => {
   }, [isLoggedIn]);
 
   return (
-    <AppBar position="static">
+    <AppBar position='static'>
       <Toolbar className='header'>
         <HomeIcon onClick={goToMainPage} className='icon'/>
           <div className='auth-block'>
@@ -68,10 +63,10 @@ export const Header: FC = () => {
                 onClick={logoutDispatch}
               />
             </>):
-            buttons.map((type: string) =>(
+            BUTTONS.map((type: string) =>(
               <Button 
-                variant="contained" 
-                size="medium" 
+                variant='contained' 
+                size='medium' 
                 onClick={() => openModal(type)} 
                 className='button'
                 key={type}

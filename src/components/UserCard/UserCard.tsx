@@ -34,30 +34,30 @@ export const UserCard: FC<IUserCard> = ({
   }
 
   return (
-    <Card className="user-card">
+    <Card className='user-card'>
       <CardMedia
-        className="avatar"
-        component="img"
+        className='avatar'
+        component='img'
         image={avatar || defaultImage}
         alt={AVATAR_ALT}
       />
-      <CardContent className="card-content">
+      <CardContent className='card-content'>
         <Typography 
           gutterBottom 
-          variant="h5" 
-          component="div" 
-          className="post-title"
+          variant='h5' 
+          component='div' 
+          className='post-title'
         >
           {username}
         </Typography>
-        <Typography variant="body2" className="post-desc">
+        <Typography variant='body2' className='post-desc'>
           {email}
         </Typography>
-        <Typography variant="body2" className="post-desc">
+        <Typography variant='body2' className='post-desc'>
             Author of {postsCount} posts
         </Typography>
         {isOwnerPage && (
-          <CardActions className="card-footer">
+          <CardActions className='card-footer'>
             <Button>{EDIT_PROFILE}</Button>
             <Button onClick={() => openModal(ADD_POST)}>{CREATE_POST}</Button>
           </CardActions>

@@ -1,7 +1,6 @@
-import { IPost } from "../vite-env";
+import { IPost } from '../vite-env';
 
-export const sortPosts = (posts: IPost[]): IPost[] => 
-  posts.sort((a, b) => {
-    if (a.id > b.id) return -1;
-    return 0;
-  });
+export const sortPosts = (posts: IPost[]): IPost[] => {
+  const currentPosts = {...posts};
+  return currentPosts.sort((a, b) => a.id > b.id ? -1 : 0);
+};

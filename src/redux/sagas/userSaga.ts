@@ -1,10 +1,10 @@
-import { put, call, takeEvery } from "redux-saga/effects";
-import { AxiosError } from "axios";
+import { put, call, takeEvery } from 'redux-saga/effects';
+import { AxiosError } from 'axios';
 
-import getUser from "../../api/getUser";
-import { USER_REQUESTED } from "../actionTypes";
-import { userFailed, userReceived } from "../actions/user";
-import { ICurrentUserActions } from "../../vite-env";
+import getUser from '../../api/getUser';
+import { USER_REQUESTED } from '../actionTypes';
+import { userFailed, userReceived } from '../actions/user';
+import { ICurrentUserActions } from '../../vite-env';
 
 function* onLoadUser({ payload }: ICurrentUserActions) {
   try {

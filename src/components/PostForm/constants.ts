@@ -1,30 +1,30 @@
 import { string, object } from 'yup';
 
-export interface Values {
+export interface IFormValues {
   title: string;
   text: string;
   tags: string;
 }
 
 const titleField = {
-  "as": "input",
-  "name": "title",
-  "placeholder": "title",
-  "rows": "0"
+  'as': 'input',
+  'name': 'title',
+  'placeholder': 'title',
+  'rows': '0'
 };
 
 const textField = {
-  "as": "textarea",
-  "name": "text",
-  "placeholder": "text",
-  "rows": "5"
+  'as': 'textarea',
+  'name': 'text',
+  'placeholder': 'text',
+  'rows': '5'
 };
 
 const tagsField = {
-  "as": "input",
-  "name": "tags",
-  "placeholder": "tag 1, tag 2, tag 3, ...",
-  "rows": "0"
+  'as': 'input',
+  'name': 'tags',
+  'placeholder': 'tag 1, tag 2, tag 3, ...',
+  'rows': '0'
 };
 
 const titleValidation = string()
@@ -36,16 +36,16 @@ const textValidation = string()
 const tagsValidation = string()
   .required('Tags is required');
 
-export const validationSchema = object().shape({
+export const FORM_VALIDATION = object().shape({
   title: titleValidation,
   text: textValidation,
   tags: tagsValidation
 });
 
-export const initialValues = {
+export const INIT_VALUES = {
   title: '',
   text: '',
   tags: ''
 };
 
-export const fields = [titleField, textField, tagsField];
+export const FORM_FIELDS = [titleField, textField, tagsField];

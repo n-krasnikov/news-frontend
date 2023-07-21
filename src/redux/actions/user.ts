@@ -1,4 +1,4 @@
-import { ICurrentUser } from "../../vite-env";
+import { ICurrentUser } from '../../vite-env';
 import { USER_REQUESTED, USER_RECEIVED, USER_FAILED } from '../actionTypes';
 
 export const userRequest = (payload: string) => ({

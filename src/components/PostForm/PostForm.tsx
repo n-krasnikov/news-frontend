@@ -1,4 +1,4 @@
-import { Fragment, type FC, useState } from 'react';
+import { Fragment, type FC, useRef } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -12,43 +12,40 @@ import { RootState } from '../../redux/reducers/rootReducer';
 import { AlertMessage } from '../AlertMessage';
 import { SEVERITY_ERROR } from '../../pages/MainPage/constants';
 import { 
-  initialValues,
-  validationSchema,
-  Values,
-  fields,
+  IFormValues,
+  INIT_VALUES,
+  FORM_VALIDATION,
+  FORM_FIELDS,
 } from './constants';
 
 import './PostForm.css'
 
 export const PostForm: FC<IPostForm> = ({modalType}) => {
   const dispatch = useDispatch();
-  const [image, setImage] = useState<File | null>(null);
-
+  const imageRef = useRef<HTMLInputElement>(null);
   const { error }: ICurrentUserState = useSelector((store: RootState) => store.user);
 
-  const submitForm = (values: Values) => {
-    values.tags = stringOfUniques(values.tags)
-    dispatch(postCreate({...values, image}))
-  }
+  const submitForm = (formValues: IFormValues) => {
+    formValues.tags = stringOfUniques(formValues.tags);
+    const uploadedImage = imageRef.current?.files?.length
+      ? imageRef.current?.files[0]
+      : null;
 
-  const onChangeImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files != null) {
-      setImage(e.target.files[0]);
-    }
+    dispatch(postCreate({...formValues, image: uploadedImage}))
   }
 
   return (
     <>
-      <Typography variant="h5" className="form-title">{ modalType }</Typography>
-      <Typography variant="body2" className="form-error">{ error }</Typography>     
+      <Typography variant='h5' className='form-title'>{ modalType }</Typography>
+      <Typography variant='body2' className='form-error'>{ error }</Typography>     
       <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={(values)=> submitForm(values)}
+        initialValues={INIT_VALUES}
+        validationSchema={FORM_VALIDATION}
+        onSubmit={(formValues)=> submitForm(formValues)}
       >
         {({errors, touched}) =>(
-          <Form className="form">
-            {fields.map(({ 
+          <Form className='form'>
+            {FORM_FIELDS.map(({ 
               as,
               name,
               placeholder,
@@ -60,23 +57,23 @@ export const PostForm: FC<IPostForm> = ({modalType}) => {
                   name={name} 
                   placeholder={placeholder}
                   rows={rows}
-                  className="form-field" 
+                  className='form-field' 
                 />
                 {touched[name as keyof object] && errors[name as keyof object] &&
                   <AlertMessage 
-                    severity={SEVERITY_ERROR} 
-                    message={errors[name as keyof object] as string}
+                    severity='error' 
+                    message={(errors as Record<string, string>)[name]}
                   />
                 }
               </Fragment>
             ))}
             <input
-              name="image" 
-              type="file"
-              accept="image/png, image/jpeg, .svg"
-              onChange={onChangeImage} 
+              name='image' 
+              type='file'
+              accept='image/png, image/jpeg, .svg'
+              ref={imageRef}
             />
-            <button type="submit">{modalType}</button>
+            <button type='submit'>{modalType}</button>
           </Form>
         )}
       </Formik>
