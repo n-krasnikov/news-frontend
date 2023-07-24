@@ -63,7 +63,7 @@ export interface IAuthState extends IState {
 export interface ICurrentUserState extends IState {
   currentUser: IUser | null,
   userPosts: Array<IPost>,
-  error: any;
+  error: string | object;
 }
 
 export interface IModalState {
