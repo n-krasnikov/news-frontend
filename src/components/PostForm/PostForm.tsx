@@ -37,7 +37,7 @@ export const PostForm: FC = () => {
   return (
     <>
       <Typography variant='h5' className='form-title'>{ modalType }</Typography>
-      <Typography variant='body2' className='form-error'>{ error }</Typography>     
+      <Typography variant='body2' className='form-error'>{ error ?? '' }</Typography>     
       <Formik
         initialValues={INIT_VALUES}
         validationSchema={FORM_VALIDATION}
