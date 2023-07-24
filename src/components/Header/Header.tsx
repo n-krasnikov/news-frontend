@@ -11,7 +11,7 @@ import HomeIcon from '@mui/icons-material/Home';
 
 import { TOKEN, BUTTONS } from './constants';
 import defaultImage from '../../assets/react.svg';
-import { IAuthState } from '../../vite-env';
+import { IAuthState, ModalType } from '../../vite-env';
 import { toggleModal } from '../../redux/actions/modal';
 import { RootState } from '../../redux/reducers/rootReducer';
 import { verifyRequested, logout } from '../../redux/actions/auth';
@@ -23,7 +23,7 @@ export const Header: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const openModal = (type: string) => {
+  const openModal = (type: ModalType) => {
     dispatch(toggleModal({ status: true, type}));
   }
   

@@ -1,5 +1,5 @@
 import { Fragment, type FC } from 'react';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import Typography from '@mui/material/Typography';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/reducers/rootReducer';
@@ -19,35 +19,34 @@ import {
 
 import './AuthForm.css'
 
+const usernameValidation = string()
+  .min(4, 'Username must be of minimum 4 characters length')
+  .required('Username is required');
+const emailValidation = string()
+  .email('Invalid email')
+  .required('Email is required');
+const passwordValidation = string()
+  .min(8, 'Password should be of minimum 8 characters length')
+  .required('Password is required');
+const signInPasswordValidation = string()
+  .required('Password is required');
+
+const SignInSchema = object().shape({
+  email: emailValidation,
+  password: signInPasswordValidation,
+});
+
+const SignUpSchema = object().shape({
+  email: emailValidation,
+  password: passwordValidation,
+  username: usernameValidation
+});
+
 export const AuthForm: FC = () => {
   const dispatch = useDispatch();
 
   const { error, authErrors }: IAuthState = useSelector((store: RootState) => store.auth);
   const { modalType }: IModalState = useSelector((store: RootState) => store.modal);
-
-
-  const usernameValidation = string()
-    .min(4, 'Username must be of minimum 4 characters length')
-    .required('Username is required');
-  const emailValidation = string()
-    .email('Invalid email')
-    .required('Email is required');
-  const passwordValidation = string()
-    .min(8, 'Password should be of minimum 8 characters length')
-    .required('Password is required');
-  const signInPasswordValidation = string()
-    .required('Password is required');
-
-  const SignInSchema = object().shape({
-    email: emailValidation,
-    password: signInPasswordValidation,
-  });
-
-  const SignUpSchema = object().shape({
-    email: emailValidation,
-    password: passwordValidation,
-    username: usernameValidation
-  });
 
   const isSignUp = modalType === SIGN_UP_TYPE;
   const currentFields = isSignUp ? SIGN_UP_FIELDS : SIGN_IN_FIELDS;
@@ -78,10 +77,10 @@ export const AuthForm: FC = () => {
                   variant='standard' 
                   placeholder={placeholder} 
                   className='form-field'
+                  errors={errors}
+                  touched={touched}
                 />
-                {touched[name as keyof object] && errors[name as keyof object] &&
-                  <AlertMessage severity={SEVERITY_ERROR} message={errors[name as keyof object] as string}/>
-                }
+                <ErrorMessage name={name}>{err => <div className='form-error'>{err}</div>}</ErrorMessage>
                 {authErrors && authErrors[name as keyof object] &&
                   <AlertMessage severity={SEVERITY_ERROR} message={authErrors[name as keyof object]}/>
                 }

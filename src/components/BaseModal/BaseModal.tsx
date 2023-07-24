@@ -9,8 +9,7 @@ import { RootState } from '../../redux/reducers/rootReducer';
 import { toggleModal } from '../../redux/actions/modal';
 import { AuthForm } from '../AuthForm';
 import { PostForm } from '../PostForm';
-import { style, SIGN } from './constants';
-import { ADD_POST } from '../../locales.json';
+import { style, SIGN, ADD_POST } from './constants';
 
 import './BaseModal.css'
 

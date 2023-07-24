@@ -13,3 +13,4 @@ export const style = {
 };
 
 export const SIGN = 'Sign'
+export const ADD_POST = 'Add Post'

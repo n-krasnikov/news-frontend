@@ -1,5 +1,5 @@
 import { Fragment, type FC, useRef } from 'react';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { string, object } from 'yup';
 
@@ -9,7 +9,6 @@ import { stringOfUniques } from '../../helpers';
 import { ICurrentUserState, IModalState } from '../../vite-env';
 import { postCreate } from '../../redux/actions/posts';
 import { RootState } from '../../redux/reducers/rootReducer';
-import { AlertMessage } from '../AlertMessage';
 import { 
   IFormValues,
   INIT_VALUES,
@@ -18,23 +17,23 @@ import {
 
 import './PostForm.css'
 
+const formValidation = object().shape({
+  title: string()
+    .min(4, 'Title must be of minimum 4 characters length')
+    .required('Title is required'),
+  text: string()
+    .min(12, 'Text must be of minimum 12 characters length')
+    .required('Text is required'),
+  tags: string()
+    .required('Tags is required'),
+});
+
 export const PostForm: FC = () => {
   const { error }: ICurrentUserState = useSelector((store: RootState) => store.user);
   const { modalType }: IModalState = useSelector((store: RootState) => store.modal);
   
   const dispatch = useDispatch();
   const imageRef = useRef<HTMLInputElement>(null);
-  
-  const formValidation = object().shape({
-    title: string()
-      .min(4, 'Title must be of minimum 4 characters length')
-      .required('Title is required'),
-    text: string()
-      .min(12, 'Text must be of minimum 12 characters length')
-      .required('Text is required'),
-    tags: string()
-      .required('Tags is required'),
-  });
 
   const submitForm = (formValues: IFormValues) => {
     formValues.tags = stringOfUniques(formValues.tags);
@@ -47,8 +46,8 @@ export const PostForm: FC = () => {
 
   return (
     <>
-      <Typography variant='h5' className='form-title'>{ modalType }</Typography>
-      <Typography variant='body2' className='form-error'>{ error }</Typography>     
+      <Typography variant='h5' className='form-title'>{modalType}</Typography>
+      <Typography variant='body2' className='form-error'>{error as string}</Typography>     
       <Formik
         initialValues={INIT_VALUES}
         validationSchema={formValidation}
@@ -69,13 +68,10 @@ export const PostForm: FC = () => {
                   placeholder={placeholder}
                   rows={rows}
                   className='form-field' 
+                  errors={errors}
+                  touched={touched}
                 />
-                {touched[name as keyof object] && errors[name as keyof object] &&
-                  <AlertMessage 
-                    severity='error' 
-                    message={(errors as Record<string, string>)[name]}
-                  />
-                }
+                <ErrorMessage name={name}>{err => <div className='form-error'>{err}</div>}</ErrorMessage>
               </Fragment>
             ))}
             <input

@@ -4,11 +4,11 @@ import { AxiosError } from 'axios';
 import { createPost } from '../../api/createPost';
 import * as actionType from '../actionTypes';
 import { postCreateFailed, postCreateSuccess } from '../actions/posts';
-import { IPostCreateAction } from '../../vite-env';
+import { IPostCreate, IPostCreateAction } from '../../vite-env';
 
 function* CreatePost({payload}: IPostCreateAction) {
   try {
-    const { data } = yield call(createPost, payload);
+    const { data } = yield call(createPost, payload as IPostCreate);
     yield put(postCreateSuccess(data));
   } catch (error: unknown) {
     if (error instanceof AxiosError) {

@@ -19,6 +19,7 @@ import {
 
 import defaultImage from '../../assets/react.svg';
 import './UserCard.css';
+import { ModalType } from '../../vite-env';
 
 export const UserCard: FC<IUserCard> = ({
   email,
@@ -29,7 +30,7 @@ export const UserCard: FC<IUserCard> = ({
 }) => {
   const dispatch = useDispatch();
 
-  const openModal = (type: string) => {
+  const openModal = (type: ModalType) => {
     dispatch(toggleModal({ status: true, type}));
   }
 

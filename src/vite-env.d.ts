@@ -30,7 +30,7 @@ export interface IPostCreate {
 
 export interface IModal {
   status: boolean,
-  type?: string,
+  type?: ModalType,
 }
 
 export interface IAuth {
@@ -63,10 +63,10 @@ export interface IAuthState extends IState {
 export interface ICurrentUserState extends IState {
   currentUser: IUser | null,
   userPosts: Array<IPost>,
-  error: string | object,
+  error: string | object | null,
 }
 
-type ModalType = 'signIn' | 'signUp' | 'addPost' | 'editProfile';
+type ModalType = 'Sign In' | 'Sign Up' | 'Add Post' | 'Edit Profile';
 export interface IModalState {
   isModalOpen: boolean,
   modalType?: ModalType,
