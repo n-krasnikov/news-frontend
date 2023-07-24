@@ -1,6 +1,7 @@
 import { Fragment, type FC, useRef } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
+import { string, object } from 'yup';
 
 import Typography from '@mui/material/Typography';
 
@@ -12,7 +13,6 @@ import { AlertMessage } from '../AlertMessage';
 import { 
   IFormValues,
   INIT_VALUES,
-  FORM_VALIDATION,
   FORM_FIELDS,
 } from './constants';
 
@@ -25,6 +25,17 @@ export const PostForm: FC = () => {
   const dispatch = useDispatch();
   const imageRef = useRef<HTMLInputElement>(null);
   
+  const formValidation = object().shape({
+    title: string()
+      .min(4, 'Title must be of minimum 4 characters length')
+      .required('Title is required'),
+    text: string()
+      .min(12, 'Text must be of minimum 12 characters length')
+      .required('Text is required'),
+    tags: string()
+      .required('Tags is required'),
+  });
+
   const submitForm = (formValues: IFormValues) => {
     formValues.tags = stringOfUniques(formValues.tags);
     const uploadedImage = imageRef.current?.files?.length
@@ -37,10 +48,10 @@ export const PostForm: FC = () => {
   return (
     <>
       <Typography variant='h5' className='form-title'>{ modalType }</Typography>
-      <Typography variant='body2' className='form-error'>{ error ?? '' }</Typography>     
+      <Typography variant='body2' className='form-error'>{ error }</Typography>     
       <Formik
         initialValues={INIT_VALUES}
-        validationSchema={FORM_VALIDATION}
+        validationSchema={formValidation}
         onSubmit={(formValues)=> submitForm(formValues)}
       >
         {({errors, touched}) =>(
