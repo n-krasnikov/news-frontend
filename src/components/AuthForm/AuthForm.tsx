@@ -3,19 +3,18 @@ import { Formik, Form, Field } from 'formik';
 import Typography from '@mui/material/Typography';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/reducers/rootReducer';
+import { string, object } from 'yup';
 
 import { IAuthState, IModalState } from '../../vite-env';
 import { AlertMessage } from '../../components/AlertMessage';
 import { signUpRequested, signInRequested } from '../../redux/actions/auth';
 import { SEVERITY_ERROR } from '../../pages/MainPage/constants';
-import { SIGN_UP } from '../../locales.json';
 import { 
-  Values, 
-  initialValues,
-  SignUpSchema, 
-  SignInSchema, 
-  SignInFields, 
-  SignUpFields,
+  IFormValues, 
+  INIT_VALUES,
+  SIGN_UP_TYPE,
+  SIGN_IN_FIELDS, 
+  SIGN_UP_FIELDS, 
 } from './constants';
 
 import './AuthForm.css'
@@ -26,8 +25,30 @@ export const AuthForm: FC = () => {
   const { error, authErrors }: IAuthState = useSelector((store: RootState) => store.auth);
   const { modalType }: IModalState = useSelector((store: RootState) => store.modal);
 
-  const isSignUp = modalType === SIGN_UP;
-  const currentFields = isSignUp ? SignUpFields : SignInFields;
+
+  const usernameValidation = string()
+    .min(4, 'Username must be of minimum 4 characters length')
+    .required('Username is required');
+  const emailValidation = string()
+    .email('Invalid email')
+    .required('Email is required');
+  const passwordValidation = string()
+    .min(8, 'Password should be of minimum 8 characters length')
+    .required('Password is required');
+
+  const SignInSchema = object().shape({
+    email: emailValidation,
+    password: passwordValidation
+  });
+
+  const SignUpSchema = object().shape({
+    email: emailValidation,
+    password: passwordValidation,
+    username: usernameValidation
+  });
+
+  const isSignUp = modalType === SIGN_UP_TYPE;
+  const currentFields = isSignUp ? SIGN_UP_FIELDS : SIGN_IN_FIELDS;
   const validationSchema = isSignUp ? SignUpSchema : SignInSchema;
 
   return (
@@ -35,10 +56,10 @@ export const AuthForm: FC = () => {
       <Typography variant='h5' className='form-title'>{ modalType }</Typography>    
       <Typography variant='body2' className='form-error'>{ error }</Typography> 
       <Formik
-        initialValues={initialValues}
+        initialValues={INIT_VALUES}
         validationSchema={validationSchema}
         onSubmit={(
-          values: Values,
+          values: IFormValues,
         ) => {
           isSignUp ?  
             dispatch(signUpRequested(values)):
@@ -65,7 +86,7 @@ export const AuthForm: FC = () => {
               </Fragment>
             ))}
             
-            <button type='submit'>{modalType}</button>
+            <button type='submit'>{ modalType }</button>
            
           </Form>
         )}

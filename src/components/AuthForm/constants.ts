@@ -1,63 +1,41 @@
-import { string, object } from 'yup';
+export const SIGN_UP_TYPE: string = "Sign Up";
 
-export interface Values {
+export interface IFormValues {
   username: string;
   password: string;
   email: string;
 }
 
-export const initialValues = {
+export const INIT_VALUES = {
   username: '',
   password: '',
   email: '',
 };
 
-const emailField = {
+const EMAIL_FIELD = {
   'type': 'email',
   'name': 'email', 
   'placeholder': 'email'
 };
 
-const passwordField = {
+const PASSWORD_FIELD = {
   'type': 'password',
   'name': 'password', 
   'placeholder': 'password'
-}
+};
 
-const usernameField = {
+const USERNAME_FIELD = {
   'type': 'text',
   'name': 'username', 
   'placeholder': 'username'
-}
+};
 
-const usernameValidation = string()
-  .min(4, 'Username must be of minimum 4 characters length')
-  .required('Username is required');
-const emailValidation = string()
-  .email('Invalid email')
-  .required('Required');
-const passwordValidation = string()
-  .min(8, 'Password should be of minimum 8 characters length')
-  .required('Password is required');
+export const SIGN_IN_FIELDS = [
+  EMAIL_FIELD,
+  PASSWORD_FIELD,
+];
 
-export const SignUpSchema = object().shape({
-  username: usernameValidation,
-  email: emailValidation,
-  password: passwordValidation
-});
-
-export const SignInSchema = object().shape({
-  email: emailValidation,
-  password: passwordValidation
-});
-
-export const SignInFields = [
-  emailField,
-  passwordField
-]
-
-export const SignUpFields = [
-  emailField,
-  usernameField,
-  passwordField
-]
+export const SIGN_UP_FIELDS = [
+  ...SIGN_IN_FIELDS, 
+  USERNAME_FIELD
+];

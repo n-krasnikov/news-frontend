@@ -1,9 +1,9 @@
 /// <reference types="vite/client" />
 interface IUser {
-  id: number
-  email: string
-  username: string
-  avatar: string
+  id: number,
+  email: string,
+  username: string,
+  avatar: string,
 }
 
 interface IState {
@@ -12,42 +12,42 @@ interface IState {
 }
 
 export interface IPost {
-  id: number;
-  title: string;
-  text: string;
-  tags: string;
-  image?: string;
-  author: string;
-  author_id: number;
+  id: number,
+  title: string,
+  text: string,
+  tags: string,
+  image?: string,
+  author: string,
+  author_id: number,
 }
 
 export interface IPostCreate {
-  title: string;
-  text: string;
-  tags: string;
-  image?: File | null;
+  title: string,
+  text: string,
+  tags: string,
+  image?: File | null,
 }
 
 export interface IModal {
-  status: boolean
-  type?: string
+  status: boolean,
+  type?: string,
 }
 
 export interface IAuth {
-  email: string
-  password: string
-  username?: string
+  email: string,
+  password: string,
+  username?: string,
 }
 
 export interface ICurrentUser {
-  user: IUser
-  posts: Array<IPost>
+  user: IUser,
+  posts: Array<IPost>,
 }
 
 export interface IPostActions {
-  type: string
-  payload?: IPost
-  error?: string
+  type: string,
+  payload?: IPost,
+  error?: string,
 }
 
 export interface IPostState extends IState {
@@ -63,33 +63,34 @@ export interface IAuthState extends IState {
 export interface ICurrentUserState extends IState {
   currentUser: IUser | null,
   userPosts: Array<IPost>,
-  error: string | object;
+  error: string | object,
 }
 
+type ModalType = 'signIn' | 'signUp' | 'addPost' | 'editProfile';
 export interface IModalState {
-  isModalOpen: boolean
-  modalType?: 'Sign In' | 'Sign Up' | 'Add Post' | 'Edit Profile'
+  isModalOpen: boolean,
+  modalType?: ModalType,
 }
 
 export interface IAuthActions {
-  type: string
-  payload?: IAuthUser
-  error?: string
+  type: string,
+  payload?: IAuthUser,
+  error?: string,
 }
 
 export interface ICurrentUserActions {
-  type: string
-  payload?: ICurrentUser
-  error?: string
+  type: string,
+  payload?: ICurrentUser,
+  error?: string,
 }
 
 export interface IModalAction {
-  type: string
-  payload: IModal
+  type: string,
+  payload: IModal,
 }
 
 export interface IPostCreateAction {
-  type: string
-  payload?: IPostCreate
-  error?: string
+  type: string,
+  payload?: IPostCreate,
+  error?: string,
 }
