@@ -1,4 +1,4 @@
-export const SIGN_UP_TYPE: string = "Sign Up";
+export const SIGN_UP_TYPE: string = 'Sign Up';
 
 export interface IFormValues {
   username: string;

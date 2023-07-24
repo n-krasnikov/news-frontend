@@ -86,7 +86,7 @@ export const AuthForm: FC = () => {
               </Fragment>
             ))}
             
-            <button type='submit'>{ modalType }</button>
+            <button type='submit'>{modalType}</button>
            
           </Form>
         )}
