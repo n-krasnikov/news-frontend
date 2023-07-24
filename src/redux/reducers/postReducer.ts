@@ -1,5 +1,10 @@
-import { POSTS_REQUESTED, POSTS_RECEIVED, POSTS_FAILED } from '../actionTypes';
 import { IPostActions, IPostState } from '../../vite-env';
+import { sortPosts } from '../../helpers';
+import { 
+  POSTS_REQUESTED, 
+  POSTS_RECEIVED, 
+  POSTS_FAILED,
+} from '../actionTypes';
 
 const initialState: IPostState = {
  posts: [],
@@ -20,7 +25,7 @@ export default function postReducer(state: IPostState = initialState, action: IP
      return {
        ...state,
        isLoading: false,
-       posts: action.payload,
+       posts: sortPosts(action.payload),
        error: null,
      };
    case POSTS_FAILED:

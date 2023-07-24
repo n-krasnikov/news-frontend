@@ -1,9 +1,9 @@
-import { put, call, takeEvery } from "redux-saga/effects";
-import { AxiosError } from "axios";
+import { put, call, takeEvery } from 'redux-saga/effects';
+import { AxiosError } from 'axios';
 
-import { verify } from "../../api/postAuth";
-import { signInFailed, verifyReceived } from "../actions/auth";
-import { VERIFY_REQUEST } from "../actionTypes";
+import { verify } from '../../api/postAuth';
+import { signInFailed, verifyReceived } from '../actions/auth';
+import { VERIFY_REQUEST } from '../actionTypes';
 
 function* onVerify() {
   try {

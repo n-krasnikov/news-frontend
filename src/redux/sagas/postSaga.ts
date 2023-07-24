@@ -1,9 +1,9 @@
-import { put, call, takeEvery } from "redux-saga/effects";
-import { AxiosError } from "axios";
+import { put, call, takeEvery } from 'redux-saga/effects';
+import { AxiosError } from 'axios';
 
-import getPosts from "../../api/getPosts";
-import * as actionType from "../actionTypes";
-import { postsFailed, postsReceived } from "../actions/posts";
+import getPosts from '../../api/getPosts';
+import * as actionType from '../actionTypes';
+import { postsFailed, postsReceived } from '../actions/posts';
 
 function* onLoadPosts() {
   try {

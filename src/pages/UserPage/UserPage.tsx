@@ -5,10 +5,11 @@ import { useParams } from 'react-router-dom';
 import { ErrorPage } from '../ErrorPage';
 import { UserCard } from '../../components/UserCard';
 import { Loader } from '../../components/Loader';
-import PostCard from '../../components/PostCard/PostCard';
+import { PostCard } from '../../components/PostCard';
 import { IAuthState, ICurrentUserState, IPost } from '../../vite-env';
 import { RootState } from '../../redux/reducers/rootReducer';
 import { userRequest } from '../../redux/actions/user';
+import { isObject } from '../../helpers';
 
 import './UserPage.css'
 
@@ -25,7 +26,7 @@ export const UserPage: FC = () => {
   }, [id]);
 
   if (isLoading) return <Loader />;
-  if (error) return <ErrorPage status={error.status} message={error.data.detail}/>;
+  if (isObject(error)) return <ErrorPage status={error?.status} message={error?.data?.detail}/>;
 
   return (
     <>
@@ -36,8 +37,8 @@ export const UserPage: FC = () => {
         avatar={currentUser?.avatar}
         postsCount={userPosts?.length}
       />
-      <div className="posts-container">
-        {userPosts.map((post: IPost) =>(
+      <div className='posts-container'>
+        {userPosts?.map((post: IPost) =>(
           <PostCard
             key={post.id}
             id={post.id}

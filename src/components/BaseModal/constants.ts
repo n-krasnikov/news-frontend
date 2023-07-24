@@ -11,3 +11,6 @@ export const style = {
   p: 4,
   color: '#fff',
 };
+
+export const SIGN = 'Sign'
+export const ADD_POST = 'Add Post'

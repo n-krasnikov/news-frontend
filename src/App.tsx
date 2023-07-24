@@ -1,6 +1,6 @@
-import { useRoutes } from "react-router-dom";
+import { useRoutes } from 'react-router-dom';
 
-import { Layout } from "./components/Layout";
+import { Layout } from './components/Layout';
 import { MainPage } from './pages/MainPage';
 import { UserPage } from './pages/UserPage';
 import { ErrorPage} from './pages/ErrorPage';
@@ -12,17 +12,17 @@ function App() {
 
   let element = useRoutes([
     {
-      path: "/",
+      path: '/',
       element: <Layout />,
       children: [
         {
-          path: "/",
+          path: '/',
           element: <MainPage />
         },{
-          path: "users/:id",
+          path: 'users/:id',
           element: <UserPage />,
         },{
-          path: "*",
+          path: '*',
           element: <ErrorPage />
         }
       ]

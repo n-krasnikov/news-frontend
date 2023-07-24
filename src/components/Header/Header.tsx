@@ -5,34 +5,29 @@ import { useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import Avatar from '@mui/material/Avatar';
+import LogOutIcon from '@mui/icons-material/DirectionsRun';
+import HomeIcon from '@mui/icons-material/Home';
 
-import { IAuthState } from '../../vite-env';
-import { TOKEN } from './constants';
+import { TOKEN, BUTTONS } from './constants';
+import defaultImage from '../../assets/react.svg';
+import { IAuthState, ModalType } from '../../vite-env';
 import { toggleModal } from '../../redux/actions/modal';
 import { RootState } from '../../redux/reducers/rootReducer';
 import { verifyRequested, logout } from '../../redux/actions/auth';
-import { 
-  SIGN_IN, 
-  SIGN_UP, 
-  LOGOUT, 
-  GREETING,
-} from '../../locales.json'
 
 import './Header.css'
 
 export const Header: FC = () => {
-  const buttons = [SIGN_IN, SIGN_UP];
   const { isLoggedIn, userData }: IAuthState = useSelector((store: RootState) => store.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const openModal = (type: string) => {
+  const openModal = (type: ModalType) => {
     dispatch(toggleModal({ status: true, type}));
   }
-  const logoutDispatch = ()=>{
-    localStorage.removeItem(TOKEN);
-    dispatch(logout());
+  
+  const goToMainPage = () => {
     navigate('/');
   }
 
@@ -40,44 +35,47 @@ export const Header: FC = () => {
     navigate(`/users/${userData?.id}`)
   }
 
+  const logoutDispatch = ()=>{
+    localStorage.removeItem(TOKEN);
+    dispatch(logout());
+    goToMainPage();
+  }
+
   useEffect(() => {
     if (isLoggedIn) dispatch(verifyRequested());
   }, [isLoggedIn]);
 
   return (
-    <AppBar position="static">
+    <AppBar position='static'>
       <Toolbar className='header'>
-        {isLoggedIn ? (
-          <Fragment>
-            <Button 
-              variant="contained" 
-              size="medium" 
-              onClick={() => logoutDispatch()} 
-              className='button'
-            >
-            {LOGOUT}
-            </Button>
-            <Typography 
-              onClick={goToUserPage} 
-              variant="body1" 
-              className='username'
-            >
-              {GREETING}{userData?.username}
-            </Typography>
-          </Fragment>
-        ):
-          buttons.map((type: string) =>(
-            <Button 
-              variant="contained" 
-              size="medium" 
-              onClick={() => openModal(type)} 
-              className='button'
-              key={type}
-            >
-            {type}
-            </Button>
-          )
-        )}
+        <HomeIcon onClick={goToMainPage} className='icon'/>
+          <div className='auth-block'>
+          {isLoggedIn ? (
+            <>
+              <Avatar 
+                onClick={goToUserPage}
+                alt={userData?.username} 
+                src={userData?.avatar || defaultImage} 
+                className='icon avatar'
+              />
+              <LogOutIcon 
+                className='icon'
+                onClick={logoutDispatch}
+              />
+            </>):
+            BUTTONS.map((type: string) =>(
+              <Button 
+                variant='contained' 
+                size='medium' 
+                onClick={() => openModal(type)} 
+                className='button'
+                key={type}
+              >
+                {type}
+              </Button>
+              )
+            )}
+          </div>
       </Toolbar>
     </AppBar>
   );

@@ -25,8 +25,9 @@ const PostCard: FC<IPostCard> = ({
   isLoggedIn,
  }) => {
 
-  const tagArr = tags.split(", ")
+  const tagArr = tags.split(',');  
   const navigate = useNavigate();
+  
   const goToUserPage = () => {
     navigate(`/users/${authorId}`)
   }
@@ -34,22 +35,22 @@ const PostCard: FC<IPostCard> = ({
   return (
     <Card sx={style}>
       <CardMedia
-        component="img"
+        component='img'
         alt={locales.IMAGE_ALT}
-        height="140"
+        height='140'
         image={image || defaultImage}
       />
       <CardContent className='card-content'>
         {tagArr.map((tag) => <span key={tag} >{tag}</span>)}
         <Typography 
           gutterBottom 
-          variant="h5" 
-          component="div" 
+          variant='h5' 
+          component='div' 
           className='post-title'
         >
          {title}
         </Typography>
-        <Typography variant="body2" className='post-desc'>
+        <Typography variant='body2' className='post-desc'>
           {text}
         </Typography>
       </CardContent>
@@ -57,7 +58,7 @@ const PostCard: FC<IPostCard> = ({
         <Button 
           onClick={goToUserPage}  
           disabled={!isLoggedIn} 
-          size="small"
+          size='small'
         >
           {author}
         </Button>

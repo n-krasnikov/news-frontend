@@ -5,6 +5,6 @@ export const style = {
   border: '2px solid #000',
   borderRadius: 2,
   boxShadow: 24,
-  bgcolor: "#405065",
-  color: "#fff"
+  bgcolor: '#405065',
+  color: '#fff'
 };

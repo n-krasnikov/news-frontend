@@ -11,7 +11,7 @@ export const AlertMessage: FC<IAlert> = ({
   message,
 }) => {
   return (
-    <Alert severity={severity} className="alert">
+    <Alert severity={severity} className='alert'>
       {message}
     </Alert>
   );

@@ -1,4 +1,4 @@
-import { IAuth } from "../../vite-env";
+import { IAuth } from '../../vite-env';
 import { 
   SIGN_UP_REQUEST,
   SIGN_IN_REQUEST,

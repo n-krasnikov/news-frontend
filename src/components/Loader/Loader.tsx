@@ -6,8 +6,8 @@ import './Loader.css'
 
 export const Loader: FC = () => {
   return <CircularProgress 
-    size = "150"
-    color = "info"
-    className="loader"
+    size = '150'
+    color = 'info'
+    className='loader'
   />;
 }
