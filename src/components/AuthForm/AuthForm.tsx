@@ -35,10 +35,12 @@ export const AuthForm: FC = () => {
   const passwordValidation = string()
     .min(8, 'Password should be of minimum 8 characters length')
     .required('Password is required');
+  const signInPasswordValidation = string()
+    .required('Password is required');
 
   const SignInSchema = object().shape({
     email: emailValidation,
-    password: passwordValidation
+    password: signInPasswordValidation,
   });
 
   const SignUpSchema = object().shape({
