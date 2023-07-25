@@ -1,4 +1,9 @@
-import { AUTH_SUCCESS, POST_CREATE_SUCCESS, TOGGLE_MODAL } from '../actionTypes';
+import { 
+  AUTH_SUCCESS,
+  POST_CREATE_SUCCESS, 
+  TOGGLE_MODAL, 
+  USER_EDIT_RECEIVED 
+} from '../actionTypes';
 import { IModalState, IModalAction } from '../../vite-env';
 
 const initialState: IModalState = {
@@ -20,6 +25,11 @@ const modalReducer = (state = initialState, action: IModalAction) => {
         isModalOpen: false
       }
     case POST_CREATE_SUCCESS:
+      return {
+        ...state,
+        isModalOpen: false,
+      }
+    case USER_EDIT_RECEIVED:
       return {
         ...state,
         isModalOpen: false,

@@ -7,6 +7,9 @@ import {
   POST_CREATE_REQUEST, 
   POST_CREATE_SUCCESS,
   POST_CREATE_FAILED,
+  USER_EDIT_REQUESTED,
+  USER_EDIT_RECEIVED,
+  USER_EDIT_FAILED,
 } from '../actionTypes';
 
 const initialState: ICurrentUserState = {
@@ -58,6 +61,25 @@ export default function userReducer(state: ICurrentUserState = initialState, act
         ...state,
         isLoading: false,
         error: action.error,
+      }
+    case USER_EDIT_REQUESTED:
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      }
+    case USER_EDIT_RECEIVED:
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+        currentUser: action.payload,
+      }
+    case USER_EDIT_FAILED:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.error
       }
     default: return state;
   }

@@ -56,7 +56,6 @@ export const Header: FC = () => {
                 onClick={goToUserPage}
                 alt={userData?.username} 
                 src={userData?.avatar || defaultImage} 
-                className='icon avatar'
               />
               <LogOutIcon 
                 className='icon'

@@ -6,6 +6,7 @@ import signUpSaga from './signUpSaga';
 import signInSaga from './signInSaga';
 import verifySaga from './verifySaga';
 import userSaga from './userSaga';
+import userEditSaga from './editUserSaga';
 
 function* rootSaga() {
   yield all([
@@ -15,6 +16,7 @@ function* rootSaga() {
     signInSaga(),
     verifySaga(),
     userSaga(),
+    userEditSaga(),
   ]);
 }
 

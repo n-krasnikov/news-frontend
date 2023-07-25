@@ -28,6 +28,11 @@ export interface IPostCreate {
   image?: File | null,
 }
 
+export interface IEditUser {
+  username: string,
+  avatar?: File | null, 
+}
+
 export interface IModal {
   status: boolean,
   type?: ModalType,
@@ -92,5 +97,11 @@ export interface IModalAction {
 export interface IPostCreateAction {
   type: string,
   payload?: IPostCreate,
+  error?: string,
+}
+
+export interface IEditUserAction {
+  type: string,
+  payload?: IEditUser,
   error?: string,
 }
