@@ -8,7 +8,6 @@ import {
   VERIFY_SUCCESS,
   LOGOUT,
   TOGGLE_MODAL,
-  USER_EDIT_FAILED,
   USER_EDIT_RECEIVED,
 } from '../actionTypes';
 import { IAuthActions, IAuthState } from '../../vite-env';

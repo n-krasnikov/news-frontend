@@ -7,12 +7,9 @@ import { userEditFailed, userEditReceived } from '../actions/user'
 import { IEditUser, IEditUserAction } from '../../vite-env';
 import { RootState } from '../reducers/rootReducer';
 
-function* editProfile({payload}: IEditUserAction) {
+function* editProfile({ payload }: IEditUserAction) {
   try {
-
-    const { userData } = yield select((state: RootState) => state.auth);
-    const id = userData?.id;
-
+    const { userData: { id } } = yield select((state: RootState) => state.auth);
     const { data } = yield call(editUser, id, payload as IEditUser);
     yield put(userEditReceived(data));
   } catch (error: unknown) {
