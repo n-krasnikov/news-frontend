@@ -8,6 +8,7 @@ import {
   VERIFY_SUCCESS,
   LOGOUT,
   TOGGLE_MODAL,
+  USER_EDIT_RECEIVED,
 } from '../actionTypes';
 import { IAuthActions, IAuthState } from '../../vite-env';
 
@@ -74,6 +75,13 @@ export default function authReducer(state: IAuthState = initialState, action: IA
         ...state,
         error: null,
         authErrors: null,
+      }
+    case USER_EDIT_RECEIVED:
+      return {
+        ...state,
+        userData: action.payload,
+        isLoading: false,
+        error: null,
       }
     default: return state;
   }
