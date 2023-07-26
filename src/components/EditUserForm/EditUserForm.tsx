@@ -44,7 +44,7 @@ export const EditUserForm: FC = () => {
         validationSchema={usernameValidation}
         onSubmit={submitForm}
       >
-        {({errors, touched}) =>(
+        {({errors, touched}) => (
           <Form className='form'>
             <Field
               name='username'

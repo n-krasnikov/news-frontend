@@ -11,10 +11,10 @@ import Typography from '@mui/material/Typography';
 import { toggleModal } from '../../redux/actions/modal';
 import { ModalType } from '../../vite-env';
 import { IUserCard } from './UserCard.props';
+import { ADD_POST_TYPE, EDIT_PROFILE_TYPE } from './constants'
 import { 
   EDIT_PROFILE,
   CREATE_POST,
-  ADD_POST,
   AVATAR_ALT,
 } from '../../locales.json'
 
@@ -59,8 +59,8 @@ export const UserCard: FC<IUserCard> = ({
         </Typography>
         {isOwnerPage && (
           <CardActions className='card-footer'>
-            <Button onClick={()=> openModal(EDIT_PROFILE as ModalType)}>{EDIT_PROFILE}</Button>
-            <Button onClick={() => openModal(ADD_POST as ModalType)}>{CREATE_POST}</Button>
+            <Button onClick={()=> openModal(EDIT_PROFILE_TYPE)}>{EDIT_PROFILE}</Button>
+            <Button onClick={() => openModal(ADD_POST_TYPE)}>{CREATE_POST}</Button>
           </CardActions>
         )}
       </CardContent>
