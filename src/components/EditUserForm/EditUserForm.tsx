@@ -9,8 +9,6 @@ import { RootState } from '../../redux/reducers/rootReducer';
 import { userEditRequested } from '../../redux/actions/user';
 import { IAuthState, IModalState } from '../../vite-env';
 
-import './EditUserForm.css'
-
 const usernameValidation = string()
   .min(4, 'Username must be of minimum 4 characters length')
   .required('Username is required');
