@@ -2,14 +2,14 @@ export interface IFormValues {
   title: string;
   text: string;
   tags: string;
-};
+}
 
 interface IField {
   as: 'input' | 'textarea',
   name: string,
   placeholder: string,
   rows: string,
-};
+}
 
 const TITLE_FIELD: IField = {
   'as': 'input',

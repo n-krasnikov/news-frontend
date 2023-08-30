@@ -9,7 +9,7 @@ import { IModalState, IModalAction } from '../../vite-env';
 const initialState: IModalState = {
   isModalOpen: false,
   modalType: 'Sign In',
-}
+};
 
 const modalReducer = (state = initialState, action: IModalAction) => {
   switch (action.type) {
@@ -18,24 +18,24 @@ const modalReducer = (state = initialState, action: IModalAction) => {
         ...state,
         isModalOpen: action.payload.status,
         modalType: action.payload.type
-      }
+      };
     case AUTH_SUCCESS:
       return {
         ...state,
         isModalOpen: false
-      }
+      };
     case POST_CREATE_SUCCESS:
       return {
         ...state,
         isModalOpen: false,
-      }
+      };
     case USER_EDIT_RECEIVED:
       return {
         ...state,
         isModalOpen: false,
-      }
+      };
     default: return state;
   }
-}
+};
 
-export default  modalReducer;
+export default modalReducer;

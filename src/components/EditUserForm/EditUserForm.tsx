@@ -30,11 +30,11 @@ export const EditUserForm: FC = () => {
     : null;
 
     dispatch(userEditRequested({...formValues, avatar: uploadedAvatar}));
-  }
+  };
 
   const INIT_VALUES = {
     username: userData?.username ?? '',
-  }
+  };
 
   return (
     <>

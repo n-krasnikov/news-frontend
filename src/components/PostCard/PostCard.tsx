@@ -13,7 +13,7 @@ import * as locales from '../../locales.json';
 import { style } from './constants';
 
 import defaultImage from '../../assets/react.svg';
-import './PostCard.css'
+import './PostCard.css';
 
 const PostCard: FC<IPostCard> = ({ 
   title,
@@ -29,8 +29,8 @@ const PostCard: FC<IPostCard> = ({
   const navigate = useNavigate();
   
   const goToUserPage = () => {
-    navigate(`/users/${authorId}`)
-  }
+    navigate(`/users/${authorId}`);
+  };
 
   return (
     <Card sx={style}>
@@ -66,6 +66,6 @@ const PostCard: FC<IPostCard> = ({
       </CardActions>
     </Card>
   );
-}
+};
 
 export default memo(PostCard);

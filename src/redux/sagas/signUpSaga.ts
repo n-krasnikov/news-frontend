@@ -12,7 +12,7 @@ function* onRegistration({ payload }: IAuthActions ) {
     yield put(signInRequested(payload));    
   } catch (error: unknown) {
     if (error instanceof AxiosError) {
-      yield put(signUpFailed((error as AxiosError)?.response?.data  ?? {}));
+      yield put(signUpFailed((error as AxiosError)?.response?.data ?? {}));
     }
   }
 }

@@ -11,7 +11,7 @@ import { RootState } from '../../redux/reducers/rootReducer';
 import { userRequest } from '../../redux/actions/user';
 import { isObject } from '../../helpers';
 
-import './UserPage.css'
+import './UserPage.css';
 
 export const UserPage: FC = () => {
   const { id } = useParams();

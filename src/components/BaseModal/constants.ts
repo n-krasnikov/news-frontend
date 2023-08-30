@@ -1,5 +1,5 @@
 export const style = {
-  position: 'absolute' as 'absolute',
+  position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
@@ -12,6 +12,6 @@ export const style = {
   color: '#fff',
 };
 
-export const SIGN = 'Sign'
-export const ADD_POST = 'Add Post'
-export const EDIT_PROFILE = 'Edit Profile'
+export const SIGN = 'Sign';
+export const ADD_POST = 'Add Post';
+export const EDIT_PROFILE = 'Edit Profile';

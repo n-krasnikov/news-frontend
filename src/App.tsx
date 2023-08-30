@@ -10,7 +10,7 @@ import './App.css';
 
 function App() {
 
-  let element = useRoutes([
+  const element = useRoutes([
     {
       path: '/',
       element: <Layout />,
@@ -23,7 +23,7 @@ function App() {
           element: <UserPage />,
         },{
           path: '*',
-          element: <ErrorPage />
+          element: <ErrorPage status={404} message={'Page Not Found'}/>
         }
       ]
     },

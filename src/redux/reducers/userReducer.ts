@@ -1,4 +1,4 @@
-import { ICurrentUserActions, ICurrentUserState, IPost } from '../../vite-env';
+import { ICurrentUserActions, ICurrentUserState } from '../../vite-env';
 import { sortPosts } from '../../helpers';
 import { 
   USER_REQUESTED, 
@@ -48,7 +48,7 @@ export default function userReducer(state: ICurrentUserState = initialState, act
         ...state,
         isLoading: true,
         error: null,
-      }
+      };
     case POST_CREATE_SUCCESS:
       return {
         ...state,
@@ -61,26 +61,26 @@ export default function userReducer(state: ICurrentUserState = initialState, act
         ...state,
         isLoading: false,
         error: action.error,
-      }
+      };
     case USER_EDIT_REQUESTED:
       return {
         ...state,
         isLoading: true,
         error: null,
-      }
+      };
     case USER_EDIT_RECEIVED:
       return {
         ...state,
         isLoading: false,
         error: null,
         currentUser: action.payload,
-      }
+      };
     case USER_EDIT_FAILED:
       return {
         ...state,
         isLoading: false,
         error: action.error
-      }
+      };
     default: return state;
   }
 }

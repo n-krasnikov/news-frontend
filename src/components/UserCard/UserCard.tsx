@@ -11,12 +11,12 @@ import Typography from '@mui/material/Typography';
 import { toggleModal } from '../../redux/actions/modal';
 import { ModalType } from '../../vite-env';
 import { IUserCard } from './UserCard.props';
-import { ADD_POST_TYPE, EDIT_PROFILE_TYPE } from './constants'
+import { ADD_POST_TYPE, EDIT_PROFILE_TYPE } from './constants';
 import { 
   EDIT_PROFILE,
   CREATE_POST,
   AVATAR_ALT,
-} from '../../locales.json'
+} from '../../locales.json';
 
 import defaultImage from '../../assets/react.svg';
 import './UserCard.css';
@@ -32,7 +32,7 @@ export const UserCard: FC<IUserCard> = ({
 
   const openModal = (type: ModalType) => {
     dispatch(toggleModal({ status: true, type}));
-  }
+  };
 
   return (
     <Card className='user-card'>
@@ -67,4 +67,4 @@ export const UserCard: FC<IUserCard> = ({
 
     </Card>
   );
-}
+};

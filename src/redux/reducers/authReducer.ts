@@ -42,7 +42,7 @@ export default function authReducer(state: IAuthState = initialState, action: IA
       return {
         ...state,
         isLoading: true,
-      }
+      };
     case VERIFY_SUCCESS:
       return {
         ...state,
@@ -69,20 +69,20 @@ export default function authReducer(state: IAuthState = initialState, action: IA
         ...state,
         userData: null,
         isLoggedIn: false,
-      }
+      };
     case TOGGLE_MODAL:
       return {
         ...state,
         error: null,
         authErrors: null,
-      }
+      };
     case USER_EDIT_RECEIVED:
       return {
         ...state,
         userData: action.payload,
         isLoading: false,
         error: null,
-      }
+      };
     default: return state;
   }
 }

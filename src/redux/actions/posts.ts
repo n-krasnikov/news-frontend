@@ -25,7 +25,7 @@ export const postsFailed = (error: string) => ({
 export const postCreate = (payload: IPostCreate) => ({
   type: POST_CREATE_REQUEST,
   payload,
-})
+});
 
 export const postCreateSuccess = (payload: IPost) => ({
   type: POST_CREATE_SUCCESS,

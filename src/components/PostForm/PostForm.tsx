@@ -15,7 +15,7 @@ import {
   FORM_FIELDS,
 } from './constants';
 
-import './PostForm.css'
+import './PostForm.css';
 
 const formValidation = object().shape({
   title: string()
@@ -41,8 +41,8 @@ export const PostForm: FC = () => {
       ? imageRef.current?.files[0]
       : null;
 
-    dispatch(postCreate({...formValues, image: uploadedImage}))
-  }
+    dispatch(postCreate({...formValues, image: uploadedImage}));
+  };
 
   return (
     <>

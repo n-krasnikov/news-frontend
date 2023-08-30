@@ -1,4 +1,4 @@
-import { useEffect, type FC, Fragment } from 'react';
+import { useEffect, type FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -16,7 +16,7 @@ import { toggleModal } from '../../redux/actions/modal';
 import { RootState } from '../../redux/reducers/rootReducer';
 import { verifyRequested, logout } from '../../redux/actions/auth';
 
-import './Header.css'
+import './Header.css';
 
 export const Header: FC = () => {
   const { isLoggedIn, userData }: IAuthState = useSelector((store: RootState) => store.auth);
@@ -25,21 +25,21 @@ export const Header: FC = () => {
 
   const openModal = (type: ModalType) => {
     dispatch(toggleModal({ status: true, type}));
-  }
+  };
   
   const goToMainPage = () => {
     navigate('/');
-  }
+  };
 
   const goToUserPage = () => {
-    navigate(`/users/${userData?.id}`)
-  }
+    navigate(`/users/${userData?.id}`);
+  };
 
   const logoutDispatch = ()=>{
     localStorage.removeItem(TOKEN);
     dispatch(logout());
     goToMainPage();
-  }
+  };
 
   useEffect(() => {
     if (isLoggedIn) dispatch(verifyRequested());
@@ -62,7 +62,7 @@ export const Header: FC = () => {
                 onClick={logoutDispatch}
               />
             </>):
-            BUTTONS.map((type: string) =>(
+            BUTTONS.map((type: ModalType) =>(
               <Button 
                 variant='contained' 
                 size='medium' 
@@ -78,4 +78,4 @@ export const Header: FC = () => {
       </Toolbar>
     </AppBar>
   );
-}
+};

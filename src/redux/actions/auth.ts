@@ -46,4 +46,4 @@ export const verifyReceived = (payload: IAuth) => ({
 
 export const logout = () => ({
   type: LOGOUT,
-})
+});

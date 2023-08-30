@@ -4,7 +4,7 @@ import Alert from '@mui/material/Alert';
 
 import { IAlert } from './AlertMessage.props';
 
-import './AlertMessage.css'
+import './AlertMessage.css';
 
 export const AlertMessage: FC<IAlert> = ({
   severity,
@@ -15,4 +15,4 @@ export const AlertMessage: FC<IAlert> = ({
       {message}
     </Alert>
   );
-}
+};

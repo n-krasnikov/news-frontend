@@ -2,7 +2,7 @@ import { type FC } from 'react';
 
 import CircularProgress from '@mui/material/CircularProgress';
 
-import './Loader.css'
+import './Loader.css';
 
 export const Loader: FC = () => {
   return <CircularProgress 
@@ -10,4 +10,4 @@ export const Loader: FC = () => {
     color = 'info'
     className='loader'
   />;
-}
+};

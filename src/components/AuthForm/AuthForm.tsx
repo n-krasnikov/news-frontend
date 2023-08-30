@@ -17,7 +17,7 @@ import {
   SIGN_UP_FIELDS, 
 } from './constants';
 
-import './AuthForm.css'
+import './AuthForm.css';
 
 const usernameValidation = string()
   .min(4, 'Username must be of minimum 4 characters length')

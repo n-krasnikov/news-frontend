@@ -17,7 +17,7 @@ import {
   EDIT_PROFILE,
 } from './constants';
 
-import './BaseModal.css'
+import './BaseModal.css';
 
 export const BaseModal = () => {
   const { isModalOpen, modalType }: IModalState = useSelector((store: RootState) => store.modal);
@@ -25,7 +25,7 @@ export const BaseModal = () => {
 
   const handleClose = () => {
     dispatch(toggleModal({status: false}));
-  }
+  };
 
   return (
     <Fragment>    
@@ -41,4 +41,4 @@ export const BaseModal = () => {
       </Modal>
     </Fragment>
   );
-}
+};

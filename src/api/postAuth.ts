@@ -7,6 +7,6 @@ export const auth = async (path: string, userData: IAuth) => {
 };
 
 export const verify = async () => {
-  const res = await api.get<IAuth>(`djos/users/me/`);
+  const res = await api.get<IAuth>('djos/users/me/');
   return res;
 };
