@@ -2,7 +2,6 @@ import { useEffect, type FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
@@ -46,36 +45,34 @@ export const Header: FC = () => {
   }, [isLoggedIn]);
 
   return (
-    <AppBar position='static'>
-      <Toolbar className='header'>
-        <HomeIcon onClick={goToMainPage} className='icon'/>
-          <div className='auth-block'>
-          {isLoggedIn ? (
-            <>
-              <Avatar 
-                onClick={goToUserPage}
-                alt={userData?.username} 
-                src={userData?.avatar || defaultImage} 
-              />
-              <LogOutIcon 
-                className='icon'
-                onClick={logoutDispatch}
-              />
-            </>):
-            BUTTONS.map((type: ModalType) =>(
-              <Button 
-                variant='contained' 
-                size='medium' 
-                onClick={() => openModal(type)} 
-                className='button'
-                key={type}
-              >
-                {type}
-              </Button>
-              )
-            )}
-          </div>
-      </Toolbar>
-    </AppBar>
+    <Toolbar className='header'>
+      <HomeIcon onClick={goToMainPage} className='icon'/>
+        <div className='auth-block'>
+        {isLoggedIn ? (
+          <>
+            <Avatar 
+              onClick={goToUserPage}
+              alt={userData?.username} 
+              src={userData?.avatar || defaultImage} 
+            />
+            <LogOutIcon 
+              className='icon'
+              onClick={logoutDispatch}
+            />
+          </>):
+          BUTTONS.map((type: ModalType) =>(
+            <Button 
+              variant='contained' 
+              size='medium' 
+              onClick={() => openModal(type)} 
+              className='button'
+              key={type}
+            >
+              {type}
+            </Button>
+            )
+          )}
+        </div>
+    </Toolbar>
   );
 };

@@ -1,5 +1,7 @@
 .header {
-  background-color: #A62D59; 
+  position: sticky;
+  width: 100%;
+  background-color: peachpuff; 
   display: flex;
   justify-content: space-between;
 }
