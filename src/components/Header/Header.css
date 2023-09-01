@@ -1,14 +1,17 @@
 .header {
-  position: sticky;
-  width: 100%;
-  background-color: peachpuff; 
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  padding: 20px 20%;
+  background-color: #aaf; 
+  box-shadow: 0 0 10px black;
 }
 
 .header .button {
-  font-weight: 500;
   margin: 0 5px;
+  font-weight: 500;
   border: 1px solid #03A696;
   background-color: #03A696; 
   color: white;
@@ -20,20 +23,49 @@
   background-color: #1B2B40;
 }
 
-.icon {
-  background-color: #03A696; 
-  padding: 10px;
-  border-radius: 30px;
-  border: #03A696;
-  display: inline;
+.icons-block > .icon {
+  box-sizing: border-box;
+  width: 45px;
+  height: 45%;
+  padding: 5px;
+  border-radius: 50%;
+  box-shadow: 0 0 5px black;
+  color: rgba(0,0,0, 0.3);
+  background-color: rgba(240, 240, 240, 1);
 }
 
-.icon:hover {
-  background-color: #1B2B40;
+.avatar {
+  background-color: rgba(240, 240, 240, 1);
+  box-shadow: 0 0 5px black;
+  padding: 5px;
 }
 
-.auth-block {
+.icons-block > *:hover {
+  color: #5e5e5e;
+  cursor: pointer;
+}
+
+.icons-block {
   display: flex;
   gap: 15px;
   align-items: center;
+  width: 20%;
+}
+
+.icons-block:first-child {
+  justify-content: flex-end;
+}
+
+.search {
+  display: block;
+  height: 45px;
+  border-radius: 45px;
+  width: 50%;
+  background-color: rgba(240, 240, 240, 1);
+  padding: 0 15px;
+  color: black;
+  font-size: large;
+  outline: none;
+  border: none;
+  box-shadow: 0 0 5px black;
 }

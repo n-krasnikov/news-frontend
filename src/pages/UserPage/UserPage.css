@@ -5,3 +5,10 @@
   gap: 20px;
   margin: 20px 50px;
 }
+
+.page {
+  max-width: 1280px;
+  width: 50%;
+  margin: 100px auto;
+  padding: 5px;
+}

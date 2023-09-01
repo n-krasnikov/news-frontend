@@ -21,6 +21,10 @@ body {
   min-height: 100vh;
 }
 
+*::selection {
+  background-color: rgba(170, 170, 255, 0.5);
+}
+
 body * {
   box-sizing: border-box;
 }

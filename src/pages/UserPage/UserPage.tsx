@@ -12,6 +12,7 @@ import { userRequest } from '../../redux/actions/user';
 import { isObject } from '../../helpers';
 
 import './UserPage.css';
+import { PostsFeed } from '../../components/PostsFeed';
 
 export const UserPage: FC = () => {
   const { id } = useParams();
@@ -29,7 +30,7 @@ export const UserPage: FC = () => {
   if (isObject(error)) return <ErrorPage status={error?.status} message={error?.data?.detail}/>;
 
   return (
-    <>
+    <div className='page'>
       <UserCard
         isOwnerPage={isOwnerPage}
         email={currentUser?.email ?? ''}
@@ -38,19 +39,8 @@ export const UserPage: FC = () => {
         postsCount={userPosts?.length}
       />
       <div className='posts-container'>
-        {userPosts?.map((post: IPost) =>(
-          <PostCard
-            key={post.id}
-            id={post.id}
-            title={post.title}
-            text={post.text}
-            image={post.image}
-            tags={post.tags}
-            author={post.author}
-            authorId={post.author_id}
-          />))
-        }
+        <PostsFeed posts={userPosts} />
       </div>
-    </>
+    </div>
   );
-}
+};

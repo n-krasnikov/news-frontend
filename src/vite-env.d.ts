@@ -19,6 +19,7 @@ export interface IPost {
   image?: string,
   author: string,
   author_id: number,
+  created_at: string,
 }
 
 export interface IPostCreate {

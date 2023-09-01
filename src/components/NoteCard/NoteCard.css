@@ -11,7 +11,7 @@
 
 .post-card-avatar {
   box-sizing: border-box;
-  border: 2px solid peachpuff;
+  border: 2px solid #aaf;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -29,6 +29,7 @@
 
 .info-timestamp {
   font-style: italic;
+  font-size: 0.9em;
 }
 
 .post-card-content {

@@ -1,13 +1,13 @@
 import { type FC, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { NoteCard } from '../../components/NoteCard';
 import { Loader } from '../../components/Loader';
 import { AlertMessage } from '../../components/AlertMessage';
+import { PostsFeed } from '../../components/PostsFeed';
 
 import { postsRequest } from '../../redux/actions/posts';
 import { RootState } from '../../redux/reducers/rootReducer';
-import { IPost, IPostState } from '../../vite-env';
+import { IPostState } from '../../vite-env';
 import * as locales from '../../locales.json';
 import { SEVERITY_ERROR, SEVERITY_INFO } from './constants';
 
@@ -23,13 +23,11 @@ export const MainPage: FC = () => {
   
   if (isLoading) return <Loader />;
   if (error) return <AlertMessage severity={SEVERITY_ERROR} message={error}/>;
+  if (!posts.length) return <AlertMessage severity={SEVERITY_INFO} message={locales.EMPTY_NEWS}/>;
 
   return (
-    <div className='container'>
-      {!posts.length && (
-        <AlertMessage severity={SEVERITY_INFO} message={locales.EMPTY_NEWS}/>)
-      }
-      {posts.map((post: IPost) => <NoteCard {...post} key={post.id}/>)}
+    <div className='page'>
+      <PostsFeed posts={posts} />
     </div>
   );
 };

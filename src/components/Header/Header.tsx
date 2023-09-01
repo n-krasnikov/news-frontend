@@ -2,13 +2,13 @@ import { useEffect, type FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import Toolbar from '@mui/material/Toolbar';
-import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
-import LogOutIcon from '@mui/icons-material/DirectionsRun';
+import LogInIcon from '@mui/icons-material/Login';
+import RegisterIcon from '@mui/icons-material/PersonAdd';
+import LogOutIcon from '@mui/icons-material/Logout';
 import HomeIcon from '@mui/icons-material/Home';
 
-import { TOKEN, BUTTONS } from './constants';
+import { TOKEN, SIGN_IN, SIGN_UP } from './constants';
 import defaultImage from '../../assets/react.svg';
 import { IAuthState, ModalType } from '../../vite-env';
 import { toggleModal } from '../../redux/actions/modal';
@@ -45,34 +45,38 @@ export const Header: FC = () => {
   }, [isLoggedIn]);
 
   return (
-    <Toolbar className='header'>
-      <HomeIcon onClick={goToMainPage} className='icon'/>
-        <div className='auth-block'>
+    <div className='header'>
+      <div className='icons-block'>
+        <HomeIcon onClick={goToMainPage} className='icon'/>
+      </div>
+        <input className='search'/>
+        <div className='icons-block'>
         {isLoggedIn ? (
           <>
             <Avatar 
               onClick={goToUserPage}
               alt={userData?.username} 
-              src={userData?.avatar || defaultImage} 
+              src={userData?.avatar || defaultImage}
+              sx={{ width: 45, height: 45 }}
+              className='avatar'
             />
             <LogOutIcon 
               className='icon'
               onClick={logoutDispatch}
             />
           </>):
-          BUTTONS.map((type: ModalType) =>(
-            <Button 
-              variant='contained' 
-              size='medium' 
-              onClick={() => openModal(type)} 
-              className='button'
-              key={type}
-            >
-              {type}
-            </Button>
-            )
-          )}
+          <>
+            <RegisterIcon 
+              className='icon'
+              onClick={() => openModal(SIGN_UP)} 
+            />
+            <LogInIcon 
+              className='icon'
+              onClick={() => openModal(SIGN_IN)}
+            />
+          </>
+        }
         </div>
-    </Toolbar>
+    </div>
   );
 };

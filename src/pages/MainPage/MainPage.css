@@ -1,15 +1,6 @@
-.news {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-evenly;
-  padding: 50px 20px;
-}
-
-.container {
+.page {
   max-width: 1280px;
   width: 50%;
-  margin: 50px auto;
+  margin: 100px auto;
   padding: 5px;
 }
